@@ -1,0 +1,57 @@
+import { NgModule, ErrorHandler } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { MyApp } from './app.component';
+
+import { AboutPage } from '../pages/about/about';
+import { ContactPage } from '../pages/contact/contact';
+import { HomePage } from '../pages/home/home';
+import { TabsPage } from '../pages/tabs/tabs';
+import { InformacaoPage } from '../pages/informacao/informacao';
+import { CadastroPage } from '../pages/cadastro/cadastro';
+import { BombaPage } from '../pages/bomba/bomba';
+
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { BombaProvider } from '../providers/bomba/bomba';
+import { VasoProvider } from '../providers/vaso/vaso';
+import { VegetalProvider } from '../providers/vegetal/vegetal';
+import { InformacaoProvider } from '../providers/informacao/informacao';
+
+@NgModule({
+  declarations: [
+    MyApp,
+    AboutPage,
+    ContactPage,
+    HomePage,
+    TabsPage,
+    InformacaoPage,
+    CadastroPage,
+    BombaPage
+  ],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(MyApp)
+  ],
+  bootstrap: [IonicApp],
+  entryComponents: [
+    MyApp,
+    AboutPage,
+    ContactPage,
+    HomePage,
+    TabsPage,
+    InformacaoPage,
+    CadastroPage,
+    BombaPage
+  ],
+  providers: [
+    StatusBar,
+    SplashScreen,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    BombaProvider,
+    VasoProvider,
+    VegetalProvider,
+    InformacaoProvider
+  ]
+})
+export class AppModule {}
