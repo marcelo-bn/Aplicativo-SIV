@@ -1,17 +1,18 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import 'rxjs/add/operator/map';
 
-/*
-  Generated class for the VasoProvider provider.
-
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class VasoProvider {
 
-  constructor(public http: HttpClient) {
-    console.log('Hello VasoProvider Provider');
+  constructor(public http: HttpClient) {}
+
+  getVaso(){
+    return this.http.get('http://localhost:5000/vaso');    
   }
+
+  putVaso() {}
+  
+  deleteVaso() {}
 
 }

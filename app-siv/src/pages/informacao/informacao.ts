@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the InformacaoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { IonicPage, NavController } from 'ionic-angular';
+import { InformacaoProvider} from '../../providers/informacao/informacao';
 
 @IonicPage()
 @Component({
@@ -15,11 +9,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class InformacaoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  info: any;
+  constructor(public navCtrl: NavController, private informacaoProvider: InformacaoProvider) {
+
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad InformacaoPage');
+  ionViewWillEnter(){
+    this.informacaoProvider.getInfo().subscribe(info => {
+      this.info = info
+      this.info = this.info.lista_info
+      console.log(this.info)
+    });
+    
   }
 
 }

@@ -27989,3 +27989,46 @@ ion-navbar.toolbar {
   padding-bottom: 4px;
   min-height: 46px;
 }
+
+ion-card#cardSpec {
+  font-size: 18px;
+}
+
+ion-card#cardspec h1 {
+  text-align: center;
+}
+
+ion-card#cardspec h2 {
+  text-align: center;
+}
+
+button#buttonBomba {
+  background-color: #7dc567;
+}
+
+ion-col#colSpec h4 {
+  text-align: center;
+}
+
+button#buttonBomba {
+  background-color: #7dc567;
+}
+
+table#tabelaspec {
+  border: 1px solid #606060;
+  border-spacing: 0px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table#tabelaspec td {
+  border: 1px solid #606060;
+  padding: 6px;
+  text-align: center;
+}
+
+table#tabelaspec th {
+  border: 1px solid #606060;
+  padding: 6px;
+  text-align: center;
+}

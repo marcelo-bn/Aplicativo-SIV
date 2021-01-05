@@ -1,14 +1,14 @@
 webpackJsonp([1],{
 
-/***/ 285:
+/***/ 287:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CadastroPageModule", function() { return CadastroPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InformacaoPageModule", function() { return InformacaoPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__cadastro__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__informacao__ = __webpack_require__(103);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var CadastroPageModule = /** @class */ (function () {
-    function CadastroPageModule() {
+var InformacaoPageModule = /** @class */ (function () {
+    function InformacaoPageModule() {
     }
-    CadastroPageModule = __decorate([
+    InformacaoPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__cadastro__["a" /* CadastroPage */],
+                __WEBPACK_IMPORTED_MODULE_2__informacao__["a" /* InformacaoPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__cadastro__["a" /* CadastroPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__informacao__["a" /* InformacaoPage */]),
             ],
         })
-    ], CadastroPageModule);
-    return CadastroPageModule;
+    ], InformacaoPageModule);
+    return InformacaoPageModule;
 }());
 
-//# sourceMappingURL=cadastro.module.js.map
+//# sourceMappingURL=informacao.module.js.map
 
 /***/ })
 

@@ -1,15 +1,45 @@
-<!--
-  Generated template for the CadastroPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
   <ion-navbar>
-    <ion-title style="text-align: center;">Cadastro</ion-title>
+    <ion-title style="text-align: center;">
+      Cadastrar
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+  <ion-row>
+
+    <ion-col id="colSpec">
+      <h4>Vegetais</h4>
+      <ion-card>
+       <ion-item *ngFor="let item of vegetais">
+        <ion-label>{{item.nome}}</ion-label>
+        <button ion-button outline item-end (click)="alterarVegetalPagina(item)">
+          <ion-icon name="create"></ion-icon>
+        </button>
+       </ion-item>
+      </ion-card>
+    </ion-col>
+
+    <ion-col id="colSpec">
+      <h4>Vasos</h4>
+      <ion-card>
+       <ion-item *ngFor="let item of vasos">
+        <ion-label>Vaso {{item.id}}: {{item.vegetal}}</ion-label>
+        <button ion-button outline item-end (click)="alterarVasoPagina(item)">
+          <ion-icon name="create"></ion-icon>
+        </button>
+       </ion-item>
+      </ion-card>
+    </ion-col>
+
+  </ion-row>
+  
+  <br>
+
+  <div style="text-align: center;">
+    <button id="buttonBomba" ion-button (click)="criarVegetalPagina()">NOVO VEGETAL</button>
+  </div>
+  
 
 </ion-content>
