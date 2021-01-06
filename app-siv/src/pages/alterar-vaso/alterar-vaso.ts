@@ -13,7 +13,7 @@ export class AlterarVasoPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AlterarVasoPage');
+    
   }
 
 }

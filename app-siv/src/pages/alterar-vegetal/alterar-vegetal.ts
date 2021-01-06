@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, ToastController, NavController, NavParams } from 'ionic-angular';
 import { VegetalProvider } from '../../providers/vegetal/vegetal';
+import { CadastroPage} from '../cadastro/cadastro';
 
 @IonicPage()
 @Component({
@@ -13,7 +14,8 @@ export class AlterarVegetalPage {
   novaTempIdeal : any;
   novaUmiIdeal : any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private vegetalProvider: VegetalProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private vegetalProvider: VegetalProvider,
+    public toastCtrl: ToastController) {
     this.vegetal = navParams.get('vegetal');
   }
 
@@ -22,26 +24,48 @@ export class AlterarVegetalPage {
   alteraVegetal(vegetal,novaTempIdeal,novaUmiIdeal) {
 
     if (novaTempIdeal == undefined && novaUmiIdeal == undefined) {
-      this.vegetalProvider.putVegetal(vegetal.nome,vegetal.tempIdeal,vegetal.umidadeIdeal)
+      this.erroToast()
       //console.log(vegetal.nome,vegetal.tempIdeal,vegetal.umidadeIdeal)
     }
     else if (novaTempIdeal != undefined && novaUmiIdeal != undefined) {
       this.vegetalProvider.putVegetal(vegetal.nome,novaTempIdeal,novaUmiIdeal)
+      this.sucessoToast()
       //console.log(vegetal.nome,novaTempIdeal,novaUmiIdeal)
     }
     else if (novaTempIdeal == undefined) {
       this.vegetalProvider.putVegetal(vegetal.nome,vegetal.tempIdeal,novaUmiIdeal)
+      this.sucessoToast()
       //console.log(vegetal.nome,vegetal.tempIdeal,novaUmiIdeal)
     }
     else if (novaUmiIdeal == undefined ) {
       this.vegetalProvider.putVegetal(vegetal.nome,novaTempIdeal,vegetal.umidadeIdeal)
+      this.sucessoToast()
       //console.log(vegetal.nome,novaTempIdeal,vegetal.umidadeIdeal)
     }
 
     this.novaTempIdeal = ""
     this.novaUmiIdeal = ""
 
+    this.navCtrl.push(CadastroPage) // Volta para a página de cadastro
+
   }
 
+  sucessoToast() {
+    let toast = this.toastCtrl.create({
+      message: 'Vegetal alterado com sucesso!',
+      duration: 3000,
+      cssClass: 'toast-succ'
+    });
+    toast.present();
+  }
+
+  erroToast() {
+    let toast = this.toastCtrl.create({
+      message: 'Nada foi alterado!',
+      duration: 3000,
+      cssClass: 'toast-fail'
+    });
+    toast.present();
+  }
 
 }

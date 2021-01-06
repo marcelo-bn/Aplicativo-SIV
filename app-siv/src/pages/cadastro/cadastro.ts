@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ToastController } from 'ionic-angular';
 import { VegetalProvider } from '../../providers/vegetal/vegetal';
 import { VasoProvider } from '../../providers/vaso/vaso';
 import { AlterarVegetalPage } from '../alterar-vegetal/alterar-vegetal';
@@ -16,7 +16,8 @@ export class CadastroPage {
   vegetais: any;
   vasos: any;
 
-  constructor(public navCtrl: NavController, private vegetalProvider: VegetalProvider, private vasoProvider: VasoProvider) {
+  constructor(public navCtrl: NavController, private vegetalProvider: VegetalProvider, private vasoProvider: VasoProvider, 
+    public toastCtrl: ToastController) {
    
   }
 
@@ -38,6 +39,17 @@ export class CadastroPage {
   // Método DELETE Vaso
   limpaVaso(vaso) {
     this.vasoProvider.deleteVaso(vaso.id)
+    this.limpaVasoToast()
+    this.ionViewWillEnter()
+  }
+
+  limpaVasoToast() {
+    let toast = this.toastCtrl.create({
+      message: 'Vaso desativado!',
+      duration: 3000,
+      cssClass: 'toast-limpa'
+    });
+    toast.present();
   }
 
   // Métodos GET Vegetal e Vaso

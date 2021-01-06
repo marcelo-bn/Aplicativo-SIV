@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, NavController, ToastController } from 'ionic-angular';
 import {BombaProvider} from '../../providers/bomba/bomba'
 
 @IonicPage()
@@ -15,7 +15,7 @@ export class BombaPage {
   vaso1: any;
   vaso2: any;
 
-  constructor(public navCtrl: NavController, private bombaProvider: BombaProvider) {
+  constructor(public navCtrl: NavController, private bombaProvider: BombaProvider, public toastCtrl: ToastController) {
   }
 
   ionViewWillEnter(){
@@ -29,13 +29,50 @@ export class BombaPage {
   }
   
   acionaBomba(idVaso){
+    
     if (idVaso == 1) {
-      this.bombaProvider.putBomba(idVaso, this.tempoBomba1)
-      this.tempoBomba1 = ""
+      if (this.tempoBomba1 != undefined && this.tempoBomba1 != "") {
+          this.bombaProvider.putBomba(idVaso, this.tempoBomba1)
+          this.tempoBomba1 = ""
+          this.sucessoToast()
+      }
+      else {
+        this.erroToast()
+      }
     } else {
-      this.bombaProvider.putBomba(idVaso, this.tempoBomba2)
-      this.tempoBomba2 = ""
+      if (this.tempoBomba2 != undefined && this.tempoBomba2 != "") {
+        this.bombaProvider.putBomba(idVaso, this.tempoBomba2)
+        this.tempoBomba2 = ""
+        this.sucessoToast()
+      }
+      else {
+        this.erroToast()
+      }
     }
+
+    this.tempoBomba1 = ""
+    this.tempoBomba2 = ""
+
   }
+
+  sucessoToast() {
+    let toast = this.toastCtrl.create({
+      message: 'A bomba será acionada!',
+      duration: 3000,
+      cssClass: 'toast-succ'
+    });
+    toast.present();
+  }
+
+  erroToast() {
+    let toast = this.toastCtrl.create({
+      message: 'Erro ao acionar bomba!',
+      duration: 3000,
+      cssClass: 'toast-fail'
+    });
+    toast.present();
+  }
+
+
 
 }

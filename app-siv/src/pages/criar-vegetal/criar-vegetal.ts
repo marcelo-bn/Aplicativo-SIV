@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { VegetalProvider} from '../../providers/vegetal/vegetal';
+import { CadastroPage} from '../cadastro/cadastro';
 
 @IonicPage()
 @Component({
@@ -31,10 +32,13 @@ export class CriarVegetalPage {
     else {
       nome = nome.toLowerCase()
       this.vegetalProvider.postVegetal(nome,tempIdeal,umiIdeal)
+      this.sucessoToast()
     }
     this.nome = ""
     this.tempIdeal = ""
     this.umiIdeal = ""
+
+    this.navCtrl.push(CadastroPage)
   }
 
   sucessoToast() {
