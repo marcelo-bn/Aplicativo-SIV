@@ -4,6 +4,7 @@ import { VegetalProvider } from '../../providers/vegetal/vegetal';
 import { VasoProvider } from '../../providers/vaso/vaso';
 import { AlterarVegetalPage } from '../alterar-vegetal/alterar-vegetal';
 import { CriarVegetalPage} from '../criar-vegetal/criar-vegetal';
+import { AlterarVasoPage } from '../alterar-vaso/alterar-vaso';
 
 
 @Component({
@@ -19,21 +20,27 @@ export class CadastroPage {
    
   }
 
-  // Método PUT Vegetal
+  // Página onde haverá método PUT Vegetal
   alterarVegetalPagina(vegetal){
     this.navCtrl.push(AlterarVegetalPage, {vegetal: vegetal})
   }
 
-  // Método POST Vegetal
+  // Página onde haverá método POST Vegetal
   criarVegetalPagina(vegetais) {
     this.navCtrl.push(CriarVegetalPage, {vegetais: vegetais})
   }
 
-   // Método PUT
-  // alteraVasoPagina(vaso){
-    //this.navCtrl.push(AlteraVasoPage, {vaso: vaso})
-  //}
+  // Página onde haverá método PUT Vaso
+  alterarVasoPagina(vaso){
+    this.navCtrl.push(AlterarVasoPage, {vaso: vaso})
+  }
 
+  // Método DELETE Vaso
+  limpaVaso(vaso) {
+    this.vasoProvider.deleteVaso(vaso.id)
+  }
+
+  // Métodos GET Vegetal e Vaso
   ionViewWillEnter(){
     this.vegetalProvider.getVegetal().subscribe(info => {
       this.vegetais = info

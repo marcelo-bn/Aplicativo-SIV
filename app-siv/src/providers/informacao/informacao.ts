@@ -11,7 +11,7 @@ export class InformacaoProvider {
 
 
   getInfo(){
-    return this.http.get('http://localhost:5000/informacao');    
+    return this.http.get('https://api-siv.herokuapp.com/informacao');    
   }
 
 }

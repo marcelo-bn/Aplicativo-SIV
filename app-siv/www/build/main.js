@@ -193,10 +193,10 @@ var CriarVegetalPage = /** @class */ (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-criar-vegetal',template:/*ion-inline-start:"/Users/marcelobittencourt/Documents/app-siv/src/pages/criar-vegetal/criar-vegetal.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title style="text-align: center;">Novo Vegetal</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <div>\n    <ion-input type="text" text-center [(ngModel)]="nome" placeholder="Nome" id="placeholderSpec"></ion-input>\n    <ion-input max="50" min= "0" type="number" text-center [(ngModel)]="tempIdeal" placeholder="Temperatura ideal" id="placeholderSpec"></ion-input>\n    <ion-input max="100" min= "0" type="number" text-center [(ngModel)]="umiIdeal" placeholder="Umidade ideal" id="placeholderSpec"></ion-input>\n    <div style="text-align: center">\n      <button style="background-color: rgb(125, 197, 103)" id="buttonCriarVegetal" ion-button (click)="criaVegetal(nome,tempIdeal,umiIdeal)">CRIAR</button>\n    </div>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/Users/marcelobittencourt/Documents/app-siv/src/pages/criar-vegetal/criar-vegetal.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__providers_vegetal_vegetal__["a" /* VegetalProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_vegetal_vegetal__["a" /* VegetalProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ToastController */]) === "function" && _d || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_vegetal_vegetal__["a" /* VegetalProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ToastController */]])
     ], CriarVegetalPage);
     return CriarVegetalPage;
-    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=criar-vegetal.js.map
@@ -333,7 +333,7 @@ var BombaProvider = /** @class */ (function () {
         this.http = http;
     }
     BombaProvider.prototype.getInfo = function () {
-        return this.http.get('http://localhost:5000/vaso');
+        return this.http.get('https://api-siv.herokuapp.com/vaso');
     };
     BombaProvider.prototype.putBomba = function (idVaso, tempoBomba) {
         var body = {
@@ -343,7 +343,7 @@ var BombaProvider = /** @class */ (function () {
         var headers = new __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["c" /* HttpHeaders */]()
             .set("Content-Type", "application/json");
         //console.log(JSON.stringify(body))
-        return this.http.put('http://localhost:5000/bomba', JSON.stringify(body), { headers: headers }).subscribe(function (val) {
+        return this.http.put('https://api-siv.herokuapp.com/bomba', JSON.stringify(body), { headers: headers }).subscribe(function (val) {
             console.log("PUT realizado", val);
         }, function (response) {
             console.log("PUT não realizado", response);
@@ -386,7 +386,7 @@ var InformacaoProvider = /** @class */ (function () {
         this.http = http;
     }
     InformacaoProvider.prototype.getInfo = function () {
-        return this.http.get('http://localhost:5000/informacao');
+        return this.http.get('https://api-siv.herokuapp.com/informacao');
     };
     InformacaoProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
@@ -488,6 +488,7 @@ var AboutPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_vaso_vaso__ = __webpack_require__(208);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__alterar_vegetal_alterar_vegetal__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__criar_vegetal_criar_vegetal__ = __webpack_require__(105);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__alterar_vaso_alterar_vaso__ = __webpack_require__(209);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -503,24 +504,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var CadastroPage = /** @class */ (function () {
     function CadastroPage(navCtrl, vegetalProvider, vasoProvider) {
         this.navCtrl = navCtrl;
         this.vegetalProvider = vegetalProvider;
         this.vasoProvider = vasoProvider;
     }
-    // Método PUT Vegetal
+    // Página onde haverá método PUT Vegetal
     CadastroPage.prototype.alterarVegetalPagina = function (vegetal) {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_4__alterar_vegetal_alterar_vegetal__["a" /* AlterarVegetalPage */], { vegetal: vegetal });
     };
-    // Método POST Vegetal
+    // Página onde haverá método POST Vegetal
     CadastroPage.prototype.criarVegetalPagina = function (vegetais) {
         this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_5__criar_vegetal_criar_vegetal__["a" /* CriarVegetalPage */], { vegetais: vegetais });
     };
-    // Método PUT
-    // alteraVasoPagina(vaso){
-    //this.navCtrl.push(AlteraVasoPage, {vaso: vaso})
-    //}
+    // Página onde haverá método PUT Vaso
+    CadastroPage.prototype.alterarVasoPagina = function (vaso) {
+        this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_6__alterar_vaso_alterar_vaso__["a" /* AlterarVasoPage */], { vaso: vaso });
+    };
+    // Método DELETE Vaso
+    CadastroPage.prototype.limpaVaso = function (vaso) {
+        this.vasoProvider.deleteVaso(vaso.id);
+    };
+    // Métodos GET Vegetal e Vaso
     CadastroPage.prototype.ionViewWillEnter = function () {
         var _this = this;
         this.vegetalProvider.getVegetal().subscribe(function (info) {
@@ -534,11 +541,12 @@ var CadastroPage = /** @class */ (function () {
     };
     CadastroPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-cadastro',template:/*ion-inline-start:"/Users/marcelobittencourt/Documents/app-siv/src/pages/cadastro/cadastro.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title style="text-align: center;">\n      Cadastrar\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <br>\n    <div style="text-align: center;" *ngIf="vegetais">\n      <button id="buttonBomba" ion-button (click)="criarVegetalPagina(vegetais)">NOVO VEGETAL</button>\n    </div>\n  <br>\n  \n  <ion-row>\n    <ion-col id="colSpec">\n      <h4>Vegetais</h4>\n      <ion-card>\n       <ion-item *ngFor="let item of vegetais">\n        <ion-label>{{item.nome}}</ion-label>\n        <button ion-button outline item-end (click)="alterarVegetalPagina(item)">\n          <ion-icon name="create"></ion-icon>\n        </button>\n       </ion-item>\n      </ion-card>\n    </ion-col>\n\n    <ion-col id="colSpec">\n      <h4>Vasos</h4>\n      <ion-card>\n       <ion-item *ngFor="let item of vasos">\n        <ion-label>Vaso {{item.id}}: {{item.vegetal}}</ion-label>\n        <button ion-button outline item-end (click)="alterarVasoPagina(item)">\n          <ion-icon name="create"></ion-icon>\n        </button>\n       </ion-item>\n      </ion-card>\n    </ion-col>\n\n  </ion-row>\n  \n</ion-content>\n'/*ion-inline-end:"/Users/marcelobittencourt/Documents/app-siv/src/pages/cadastro/cadastro.html"*/,
+            selector: 'page-cadastro',template:/*ion-inline-start:"/Users/marcelobittencourt/Documents/app-siv/src/pages/cadastro/cadastro.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title style="text-align: center;">\n      Cadastrar\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <br>\n    <div style="text-align: center;" *ngIf="vegetais">\n      <button id="buttonBomba" ion-button (click)="criarVegetalPagina(vegetais)">NOVO VEGETAL</button>\n    </div>\n  <br>\n  \n  <ion-row>\n    <ion-col id="colSpec">\n      <h4>Vegetais</h4>\n      <ion-card>\n       <ion-item *ngFor="let item of vegetais">\n        <ion-label>{{item.nome}}</ion-label>\n        <button ion-button outline item-end (click)="alterarVegetalPagina(item)">\n          <ion-icon name="create"></ion-icon>\n        </button>\n       </ion-item>\n      </ion-card>\n    </ion-col>\n\n    <ion-col id="colSpec">\n      <h4>Vasos</h4>\n      <ion-card>\n       <ion-item *ngFor="let item of vasos">\n        <ion-label>Vaso {{item.id}}: {{item.vegetal}}</ion-label>\n        <button ion-button outline item-end (click)="alterarVasoPagina(item)">\n          <ion-icon name="create"></ion-icon>\n        </button>\n        <button ion-button outline item-end (click)="limpaVaso(item)">\n          <ion-icon id="butDelete" name="md-trash" color="danger"></ion-icon>\n        </button>\n       </ion-item>\n      </ion-card>\n    </ion-col>\n\n  </ion-row>\n  \n</ion-content>\n'/*ion-inline-end:"/Users/marcelobittencourt/Documents/app-siv/src/pages/cadastro/cadastro.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_vegetal_vegetal__["a" /* VegetalProvider */], __WEBPACK_IMPORTED_MODULE_3__providers_vaso_vaso__["a" /* VasoProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__providers_vegetal_vegetal__["a" /* VegetalProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_vegetal_vegetal__["a" /* VegetalProvider */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_vaso_vaso__["a" /* VasoProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_vaso_vaso__["a" /* VasoProvider */]) === "function" && _c || Object])
     ], CadastroPage);
     return CadastroPage;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=cadastro.js.map
@@ -571,15 +579,34 @@ var VasoProvider = /** @class */ (function () {
         this.http = http;
     }
     VasoProvider.prototype.getVaso = function () {
-        return this.http.get('http://localhost:5000/vaso');
+        return this.http.get('https://api-siv.herokuapp.com/vaso');
     };
     VasoProvider.prototype.putVaso = function () { };
-    VasoProvider.prototype.deleteVaso = function () { };
+    VasoProvider.prototype.deleteVaso = function (vaso) {
+        var data = {
+            idVaso: String(vaso)
+        };
+        var data_JSON = JSON.stringify(data);
+        var headers = new __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["c" /* HttpHeaders */]()
+            .set("Content-Type", "application/json");
+        var httpOptions = {
+            headers: new __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["c" /* HttpHeaders */]({ 'Content-Type': 'application/json' }), body: data_JSON
+        };
+        return this.http.delete("https://api-siv.herokuapp.com/vaso", httpOptions)
+            .subscribe(function (val) {
+            console.log("DELETE call successful value returned in body", val);
+        }, function (response) {
+            console.log("DELETE call in error", response);
+        }, function () {
+            console.log("The DELETE observable is now completed.");
+        });
+    };
     VasoProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]) === "function" && _a || Object])
     ], VasoProvider);
     return VasoProvider;
+    var _a;
 }());
 
 //# sourceMappingURL=vaso.js.map
@@ -604,12 +631,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-/**
- * Generated class for the AlterarVasoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 var AlterarVasoPage = /** @class */ (function () {
     function AlterarVasoPage(navCtrl, navParams) {
         this.navCtrl = navCtrl;
@@ -620,11 +641,12 @@ var AlterarVasoPage = /** @class */ (function () {
     };
     AlterarVasoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-alterar-vaso',template:/*ion-inline-start:"/Users/marcelobittencourt/Documents/app-siv/src/pages/alterar-vaso/alterar-vaso.html"*/'<!--\n  Generated template for the AlterarVasoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title>alterar-vaso</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/Users/marcelobittencourt/Documents/app-siv/src/pages/alterar-vaso/alterar-vaso.html"*/,
+            selector: 'page-alterar-vaso',template:/*ion-inline-start:"/Users/marcelobittencourt/Documents/app-siv/src/pages/alterar-vaso/alterar-vaso.html"*/'<!--\n  Generated template for the AlterarVasoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title style="text-align: center;">Alterar Vaso</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/Users/marcelobittencourt/Documents/app-siv/src/pages/alterar-vaso/alterar-vaso.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */]) === "function" && _b || Object])
     ], AlterarVasoPage);
     return AlterarVasoPage;
+    var _a, _b;
 }());
 
 //# sourceMappingURL=alterar-vaso.js.map
@@ -903,7 +925,7 @@ var VegetalProvider = /** @class */ (function () {
         this.http = http;
     }
     VegetalProvider.prototype.getVegetal = function () {
-        return this.http.get('http://localhost:5000/vegetal');
+        return this.http.get('https://api-siv.herokuapp.com/vegetal');
     };
     VegetalProvider.prototype.putVegetal = function (nome, tempIdeal, umiIdeal) {
         var body = {
@@ -913,7 +935,7 @@ var VegetalProvider = /** @class */ (function () {
         };
         var headers = new __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["c" /* HttpHeaders */]()
             .set("Content-Type", "application/json");
-        return this.http.put('http://localhost:5000/vegetal', JSON.stringify(body), { headers: headers }).subscribe(function (val) {
+        return this.http.put('https://api-siv.herokuapp.com//vegetal', JSON.stringify(body), { headers: headers }).subscribe(function (val) {
             console.log("PUT realizado", val);
         }, function (response) {
             console.log("PUT não realizado", response);
