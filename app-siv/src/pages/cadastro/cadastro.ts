@@ -25,8 +25,8 @@ export class CadastroPage {
   }
 
   // Método POST Vegetal
-  criarVegetalPagina() {
-    this.navCtrl.push(CriarVegetalPage)
+  criarVegetalPagina(vegetais) {
+    this.navCtrl.push(CriarVegetalPage, {vegetais: vegetais})
   }
 
    // Método PUT

@@ -1,3 +1,11 @@
-page-criar-vegetal {
+.toast-suc {
+    .toast-message {
+        background-color: rgb(125, 197, 103);
+    }
+}
 
+.toast-fail {
+    .toast-message {
+        background-color: red;
+    }
 }

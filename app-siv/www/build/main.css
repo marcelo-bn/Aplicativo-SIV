@@ -28014,6 +28014,14 @@ button#buttonBomba {
   background-color: #7dc567;
 }
 
+.toast-suc .toast-message {
+  background-color: #7dc567;
+}
+
+.toast-fail .toast-message {
+  background-color: red;
+}
+
 table#tabelaspec {
   border: 1px solid #606060;
   border-spacing: 0px;

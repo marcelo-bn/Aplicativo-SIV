@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 
@@ -37,6 +37,30 @@ export class VegetalProvider {
 
   }
 
-  postVegetal(nome,tempIdeal,umiIdeal) {}
+  postVegetal(nome,tempIdeal,umiIdeal) {
+
+    let body = {
+      nome : nome,
+      tempIdeal : String(tempIdeal),
+      umidadeIdeal : String(umiIdeal)
+    };
+
+    const headers = new HttpHeaders()
+    .set("Content-Type", "application/json");
+
+    return this.http.post('http://localhost:5000/vegetal', JSON.stringify(body), 
+                        {headers}).subscribe(
+                                    val => {
+                                        console.log("POST realizado", 
+                                                    val);
+                                    },
+                                    response => {
+                                        console.log("POST não realizado", response);
+                                    }
+                                );
+                                               
+
+  }
+
 
 }

@@ -7,8 +7,13 @@
 </ion-header>
 
 <ion-content padding>
+  <br>
+    <div style="text-align: center;" *ngIf="vegetais">
+      <button id="buttonBomba" ion-button (click)="criarVegetalPagina(vegetais)">NOVO VEGETAL</button>
+    </div>
+  <br>
+  
   <ion-row>
-
     <ion-col id="colSpec">
       <h4>Vegetais</h4>
       <ion-card>
@@ -35,11 +40,4 @@
 
   </ion-row>
   
-  <br>
-
-  <div style="text-align: center;">
-    <button id="buttonBomba" ion-button (click)="criarVegetalPagina()">NOVO VEGETAL</button>
-  </div>
-  
-
 </ion-content>
