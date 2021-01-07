@@ -46,7 +46,7 @@ var AlterarVasoPage = /** @class */ (function () {
             this.erroToast();
         }
         else if (this.verificaNomeVegetal(nomeVegetal)) {
-            this.vasoProvider.putVaso(vaso.id, nomeVegetal);
+            this.vasoProvider.putVaso(vaso.id, nomeVegetal.toLowerCase());
             this.sucessoToast();
         }
         else {
