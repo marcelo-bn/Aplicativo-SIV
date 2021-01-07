@@ -25,13 +25,15 @@ export class AlterarVasoPage {
       this.vegetais = info
       this.vegetais = this.vegetais.lista_vegetais
     });
-    console.log(this.vaso.nomeVegetal)
   }
 
   
   // Método PUT Vaso
   alterarVaso(vaso,nomeVegetal) {
-    if (this.verificaNomeVegetal(nomeVegetal)) {
+    if ((nomeVegetal == undefined) || (nomeVegetal == "")) {
+      this.erroToast()
+    }
+    else if (this.verificaNomeVegetal(nomeVegetal)) {
       this.vasoProvider.putVaso(vaso.id,nomeVegetal)
       this.sucessoToast() 
     } else {
@@ -43,7 +45,7 @@ export class AlterarVasoPage {
 
 
   verificaNomeVegetal(nome) {
-    console.log(nome)
+    
     // Verifica se existe esse vegetal 
     let aux = false
 

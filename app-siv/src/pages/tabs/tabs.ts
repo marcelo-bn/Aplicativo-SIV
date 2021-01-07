@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 
 import { AboutPage } from '../about/about';
-import { ContactPage } from '../contact/contact';
-import { HomePage } from '../home/home';
 import { InformacaoPage } from '../informacao/informacao';
 import { CadastroPage } from '../cadastro/cadastro';
 import { BombaPage } from '../bomba/bomba';
