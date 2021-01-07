@@ -28002,6 +28002,18 @@ ion-card#cardSpec {
   background-color: red;
 }
 
+ion-card#cardSpec {
+  font-size: 18px;
+}
+
+.toast-succ .toast-message {
+  background-color: #7dc567;
+}
+
+.toast-fail .toast-message {
+  background-color: red;
+}
+
 ion-card#cardspec h1 {
   text-align: center;
 }

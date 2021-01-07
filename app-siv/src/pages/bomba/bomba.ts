@@ -33,7 +33,6 @@ export class BombaPage {
     if (idVaso == 1) {
       if (this.tempoBomba1 != undefined && this.tempoBomba1 != "") {
           this.bombaProvider.putBomba(idVaso, this.tempoBomba1)
-          this.tempoBomba1 = ""
           this.sucessoToast()
       }
       else {
@@ -42,7 +41,6 @@ export class BombaPage {
     } else {
       if (this.tempoBomba2 != undefined && this.tempoBomba2 != "") {
         this.bombaProvider.putBomba(idVaso, this.tempoBomba2)
-        this.tempoBomba2 = ""
         this.sucessoToast()
       }
       else {

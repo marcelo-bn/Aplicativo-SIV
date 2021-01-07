@@ -11,5 +11,18 @@
 </ion-header>
 
 <ion-content padding>
+  <div *ngIf="vaso">
+    <h3 style="text-align: center; color:  rgb(125, 197, 103);">Vegetal do Vaso</h3>
+    <ion-card id="cardSpec">
+       <strong>Vegetal presente: </strong> {{vaso.vegetal}} <br>
+    </ion-card>
+  </div>
+
+  <div>
+    <ion-input type="text" text-center [(ngModel)]="nomeVegetal" placeholder="Insira o nome do novo vegetal" id="placeholderSpec"></ion-input>
+    <div style="text-align: center">
+      <button style="background-color: rgb(125, 197, 103)" id="buttonalteraVaso" ion-button (click)="alterarVaso(vaso,nomeVegetal)">Alterar</button>
+    </div>
+  </div>
 
 </ion-content>

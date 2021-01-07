@@ -11,7 +11,28 @@ export class VasoProvider {
     return this.http.get('https://api-siv.herokuapp.com/vaso');    
   }
 
-  putVaso() {}
+  putVaso(idVaso,nomeVegetal) {
+
+    let body = {
+      idVaso : String(idVaso),
+      nomeVegetal : nomeVegetal
+    };
+
+    const headers = new HttpHeaders()
+    .set("Content-Type", "application/json");
+
+    return this.http.put('https://api-siv.herokuapp.com/vaso', JSON.stringify(body), 
+                        {headers}).subscribe(
+                                    val => {
+                                        console.log("PUT realizado", 
+                                                    val);
+                                    },
+                                    response => {
+                                        console.log("PUT não realizado", response);
+                                    }
+                                );
+
+  }
   
   deleteVaso(vaso) {
     let data = {
@@ -31,15 +52,13 @@ export class VasoProvider {
     return this.http.delete("https://api-siv.herokuapp.com/vaso", httpOptions)
                             .subscribe(
                                 (val) => {
-                                    console.log("DELETE call successful value returned in body", 
+                                    console.log("DELETE realizado!", 
                                                 val);
                                 },
                                 response => {
-                                    console.log("DELETE call in error", response);
-                                },
-                                () => {
-                                    console.log("The DELETE observable is now completed.");
-                                });
+                                    console.log("DELETE não realizado!", response);
+                                }
+                              );
 
   }
 

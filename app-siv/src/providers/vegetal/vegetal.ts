@@ -33,8 +33,6 @@ export class VegetalProvider {
                                     }
                                 );
 
-
-
   }
 
   postVegetal(nome,tempIdeal,umiIdeal) {
