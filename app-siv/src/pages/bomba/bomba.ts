@@ -22,8 +22,8 @@ export class BombaPage {
     this.bombaProvider.getInfo().subscribe(info => {
       this.info = info
       this.info = this.info.lista_vasos
-      this.vaso1 = this.info[0]
-      this.vaso2 = this.info[1]
+      this.vaso1 = this.info[1] // GET RETORNA O ID DOS VASOS DECRESCENTE
+      this.vaso2 = this.info[0]
     });
 
   }
@@ -31,20 +31,28 @@ export class BombaPage {
   acionaBomba(idVaso){
     
     if (idVaso == 1) {
-      if (this.tempoBomba1 != undefined && this.tempoBomba1 != "") {
-          this.bombaProvider.putBomba(idVaso, this.tempoBomba1)
-          this.sucessoToast()
-      }
-      else {
-        this.erroToast()
+      if (this.vaso1.status == 1) {
+        if (this.tempoBomba1 != undefined && this.tempoBomba1 != "") {
+            this.bombaProvider.putBomba(idVaso, this.tempoBomba1)
+            this.sucessoToast()
+        }
+        else {
+          this.erroToast("Valor inválido!")
+        }
+      } else {
+        this.erroToast("O vaso não está ativo!")
       }
     } else {
-      if (this.tempoBomba2 != undefined && this.tempoBomba2 != "") {
-        this.bombaProvider.putBomba(idVaso, this.tempoBomba2)
-        this.sucessoToast()
-      }
-      else {
-        this.erroToast()
+      if (this.vaso2.status == 1) {
+        if (this.tempoBomba2 != undefined && this.tempoBomba2 != "") {
+          this.bombaProvider.putBomba(idVaso, this.tempoBomba2)
+          this.sucessoToast()
+        }
+        else {
+          this.erroToast("Valor inválido!")
+        }
+      } else {
+        this.erroToast("O vaso não está ativo!")
       }
     }
 
@@ -62,9 +70,9 @@ export class BombaPage {
     toast.present();
   }
 
-  erroToast() {
+  erroToast(msg) {
     let toast = this.toastCtrl.create({
-      message: 'Erro ao acionar bomba!',
+      message: msg,
       duration: 3000,
       cssClass: 'toast-fail'
     });

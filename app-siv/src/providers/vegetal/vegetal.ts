@@ -8,7 +8,7 @@ export class VegetalProvider {
   constructor(public http: HttpClient) {}
 
   getVegetal(){
-    return this.http.get('https://api-siv.herokuapp.com/vegetal');    
+    return this.http.get('https://projeto-siv.herokuapp.com/vegetal');    
   }
 
   putVegetal(nome,tempIdeal,umiIdeal) {
@@ -22,7 +22,7 @@ export class VegetalProvider {
     const headers = new HttpHeaders()
     .set("Content-Type", "application/json");
 
-    return this.http.put('https://api-siv.herokuapp.com/vegetal', JSON.stringify(body), 
+    return this.http.put('https://projeto-siv.herokuapp.com/vegetal', JSON.stringify(body), 
                         {headers}).subscribe(
                                     val => {
                                         console.log("PUT realizado", 
@@ -46,7 +46,7 @@ export class VegetalProvider {
     const headers = new HttpHeaders()
     .set("Content-Type", "application/json");
 
-    return this.http.post('https://api-siv.herokuapp.com/vegetal', JSON.stringify(body), 
+    return this.http.post('https://projeto-siv.herokuapp.com/vegetal', JSON.stringify(body), 
                         {headers}).subscribe(
                                     val => {
                                         console.log("POST realizado", 

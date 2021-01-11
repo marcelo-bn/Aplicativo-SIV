@@ -6,12 +6,12 @@ import 'rxjs/add/operator/map';
 export class BombaProvider {
 
   info : any;
-
+  URI : 'https://projeto-siv.herokuapp.com/';
   constructor(public http: HttpClient) {}
 
 
   getInfo(){
-    return this.http.get('https://api-siv.herokuapp.com/vaso');    
+    return this.http.get('https://projeto-siv.herokuapp.com/vaso');    
   }
 
   putBomba(idVaso, tempoBomba){
@@ -24,7 +24,7 @@ export class BombaProvider {
     .set("Content-Type", "application/json");
 
     //console.log(JSON.stringify(body))
-    return this.http.put('https://api-siv.herokuapp.com/bomba', JSON.stringify(body), 
+    return this.http.put('https://projeto-siv.herokuapp.com/bomba', JSON.stringify(body), 
                         {headers}).subscribe(
                                     val => {
                                         console.log("PUT realizado", 

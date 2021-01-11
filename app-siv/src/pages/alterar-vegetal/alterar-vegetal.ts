@@ -45,8 +45,8 @@ export class AlterarVegetalPage {
 
     this.novaTempIdeal = ""
     this.novaUmiIdeal = ""
-
-    this.navCtrl.push(CadastroPage) // Volta para a página de cadastro
+    setTimeout(() => { console.log("World!"); }, 3000);
+    this.navCtrl.pop() // Volta para a página de cadastro
 
   }
 

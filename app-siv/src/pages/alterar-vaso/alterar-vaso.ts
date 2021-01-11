@@ -40,7 +40,8 @@ export class AlterarVasoPage {
       this.erroToast()
     }
     this.nomeVegetal = ""
-    this.navCtrl.push(CadastroPage)
+    //this.navCtrl.push(CadastroPage)
+    this.navCtrl.pop()
   }
 
 

@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 
@@ -8,7 +8,7 @@ export class VasoProvider {
   constructor(public http: HttpClient) {}
 
   getVaso(){
-    return this.http.get('https://api-siv.herokuapp.com/vaso');    
+    return this.http.get('https://projeto-siv.herokuapp.com/vaso');    
   }
 
   putVaso(idVaso,nomeVegetal) {
@@ -21,7 +21,7 @@ export class VasoProvider {
     const headers = new HttpHeaders()
     .set("Content-Type", "application/json");
 
-    return this.http.put('https://api-siv.herokuapp.com/vaso', JSON.stringify(body), 
+    return this.http.put('https://projeto-siv.herokuapp.com/vaso', JSON.stringify(body), 
                         {headers}).subscribe(
                                     val => {
                                         console.log("PUT realizado", 
@@ -49,7 +49,7 @@ export class VasoProvider {
      };
 
   
-    return this.http.delete("https://api-siv.herokuapp.com/vaso", httpOptions)
+    return this.http.delete("https://projeto-siv.herokuapp.com/vaso", httpOptions)
                             .subscribe(
                                 (val) => {
                                     console.log("DELETE realizado!", 

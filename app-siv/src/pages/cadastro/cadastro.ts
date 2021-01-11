@@ -63,6 +63,8 @@ export class CadastroPage {
       this.vasos = info
       this.vasos = this.vasos.lista_vasos
     });
+    
   }
+
 
 }

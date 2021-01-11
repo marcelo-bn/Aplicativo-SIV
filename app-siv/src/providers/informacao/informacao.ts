@@ -6,12 +6,12 @@ import 'rxjs/add/operator/map';
 export class InformacaoProvider {
 
   info : any;
-
+  URI = 'https://projeto-siv.herokuapp.com/';
   constructor(public http: HttpClient) {}
 
 
   getInfo(){
-    return this.http.get('https://api-siv.herokuapp.com/informacao');    
+    return this.http.get('https://projeto-siv.herokuapp.com/informacao');    
   }
 
 }

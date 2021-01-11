@@ -10,10 +10,10 @@ import { BombaPage } from '../bomba/bomba';
 })
 export class TabsPage {
 
-  tab1Root = InformacaoPage;
+  tab1Root = AboutPage;
   tab2Root = CadastroPage;
   tab3Root = BombaPage;
-  tab4Root = AboutPage;
+  tab4Root = InformacaoPage;
 
   constructor() {
 
