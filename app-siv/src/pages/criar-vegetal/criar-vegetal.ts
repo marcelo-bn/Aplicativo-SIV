@@ -38,7 +38,8 @@ export class CriarVegetalPage {
     this.tempIdeal = ""
     this.umiIdeal = ""
 
-    this.navCtrl.push(CadastroPage)
+    //this.navCtrl.push(CadastroPage)
+    this.navCtrl.pop()
   }
 
   sucessoToast() {

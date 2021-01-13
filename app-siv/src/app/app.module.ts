@@ -14,6 +14,7 @@ import { BombaPage } from '../pages/bomba/bomba';
 import { AlterarVegetalPage} from '../pages/alterar-vegetal/alterar-vegetal';
 import { AlterarVasoPage} from '../pages/alterar-vaso/alterar-vaso';
 import { CriarVegetalPage } from '../pages/criar-vegetal/criar-vegetal';
+import { EmailPage} from '../pages/email/email';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -21,6 +22,7 @@ import { BombaProvider } from '../providers/bomba/bomba';
 import { VasoProvider } from '../providers/vaso/vaso';
 import { VegetalProvider } from '../providers/vegetal/vegetal';
 import { InformacaoProvider } from '../providers/informacao/informacao';
+import { EmailProvider } from '../providers/email/email';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { InformacaoProvider } from '../providers/informacao/informacao';
     BombaPage,
     AlterarVegetalPage,
     AlterarVasoPage,
-    CriarVegetalPage
+    CriarVegetalPage,
+    EmailPage
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,8 @@ import { InformacaoProvider } from '../providers/informacao/informacao';
     BombaPage,
     AlterarVegetalPage,
     AlterarVasoPage,
-    CriarVegetalPage
+    CriarVegetalPage,
+    EmailPage
   ],
   providers: [
     StatusBar,
@@ -62,7 +66,8 @@ import { InformacaoProvider } from '../providers/informacao/informacao';
     BombaProvider,
     VasoProvider,
     VegetalProvider,
-    InformacaoProvider
+    InformacaoProvider,
+    EmailProvider
   ]
 })
 export class AppModule {}

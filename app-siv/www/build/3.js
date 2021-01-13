@@ -1,14 +1,14 @@
 webpackJsonp([3],{
 
-/***/ 289:
+/***/ 292:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AlterarVegetalPageModule", function() { return AlterarVegetalPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "BombaPageModule", function() { return BombaPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__alterar_vegetal__ = __webpack_require__(106);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__bomba__ = __webpack_require__(106);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var AlterarVegetalPageModule = /** @class */ (function () {
-    function AlterarVegetalPageModule() {
+var BombaPageModule = /** @class */ (function () {
+    function BombaPageModule() {
     }
-    AlterarVegetalPageModule = __decorate([
+    BombaPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__alterar_vegetal__["a" /* AlterarVegetalPage */],
+                __WEBPACK_IMPORTED_MODULE_2__bomba__["a" /* BombaPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__alterar_vegetal__["a" /* AlterarVegetalPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__bomba__["a" /* BombaPage */]),
             ],
         })
-    ], AlterarVegetalPageModule);
-    return AlterarVegetalPageModule;
+    ], BombaPageModule);
+    return BombaPageModule;
 }());
 
-//# sourceMappingURL=alterar-vegetal.module.js.map
+//# sourceMappingURL=bomba.module.js.map
 
 /***/ })
 
