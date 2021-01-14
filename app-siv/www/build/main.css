@@ -28062,6 +28062,10 @@ button#buttonBomba {
   background-color: red;
 }
 
+canvas {
+  max-width: 100%;
+}
+
 table#tabelaspec {
   border: 1px solid #606060;
   border-spacing: 0px;
