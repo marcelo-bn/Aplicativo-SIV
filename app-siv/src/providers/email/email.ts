@@ -16,7 +16,7 @@ export class EmailProvider {
     const headers = new HttpHeaders()
     .set("Content-Type", "application/json");
 
-    return this.http.post('http://localhost:5000', JSON.stringify(body), 
+    return this.http.post('http://localhost:5000/email', JSON.stringify(body), 
                         {headers}).subscribe(
                                     val => {
                                         console.log("POST realizado", 

@@ -1,14 +1,14 @@
 webpackJsonp([1],{
 
-/***/ 294:
+/***/ 436:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EmailPageModule", function() { return EmailPageModule; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GraficoPageModule", function() { return GraficoPageModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__email__ = __webpack_require__(108);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__grafico__ = __webpack_require__(111);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,23 +18,23 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var EmailPageModule = /** @class */ (function () {
-    function EmailPageModule() {
+var GraficoPageModule = /** @class */ (function () {
+    function GraficoPageModule() {
     }
-    EmailPageModule = __decorate([
+    GraficoPageModule = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* NgModule */])({
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_2__email__["a" /* EmailPage */],
+                __WEBPACK_IMPORTED_MODULE_2__grafico__["a" /* GraficoPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__email__["a" /* EmailPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__grafico__["a" /* GraficoPage */]),
             ],
         })
-    ], EmailPageModule);
-    return EmailPageModule;
+    ], GraficoPageModule);
+    return GraficoPageModule;
 }());
 
-//# sourceMappingURL=email.module.js.map
+//# sourceMappingURL=grafico.module.js.map
 
 /***/ })
 

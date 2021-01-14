@@ -15,6 +15,7 @@ import { AlterarVegetalPage} from '../pages/alterar-vegetal/alterar-vegetal';
 import { AlterarVasoPage} from '../pages/alterar-vaso/alterar-vaso';
 import { CriarVegetalPage } from '../pages/criar-vegetal/criar-vegetal';
 import { EmailPage} from '../pages/email/email';
+import { GraficoPage} from '../pages/grafico/grafico';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -37,7 +38,8 @@ import { EmailProvider } from '../providers/email/email';
     AlterarVegetalPage,
     AlterarVasoPage,
     CriarVegetalPage,
-    EmailPage
+    EmailPage,
+    GraficoPage
   ],
   imports: [
     BrowserModule,
@@ -57,7 +59,8 @@ import { EmailProvider } from '../providers/email/email';
     AlterarVegetalPage,
     AlterarVasoPage,
     CriarVegetalPage,
-    EmailPage
+    EmailPage,
+    GraficoPage
   ],
   providers: [
     StatusBar,
