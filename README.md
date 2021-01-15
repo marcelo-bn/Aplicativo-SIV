@@ -45,7 +45,7 @@ Será possível ver todas as informações coletadas pelos sensores do sistema.
 Nesta página o usuário irá visualizar de forma gráfico os dados coletados de cada um dos vasos. Sendo possível alterar o tipo do gráfico para de Linhas ou Barras.
 
   <p align="center">
-      <img src="./img/gráfico.png" width="300" height="500">
+      <img src="./img/grafico.png" width="300" height="500">
   </p>
 
 
