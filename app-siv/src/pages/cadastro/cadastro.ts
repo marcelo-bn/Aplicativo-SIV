@@ -38,9 +38,11 @@ export class CadastroPage {
 
   // Método DELETE Vaso
   limpaVaso(vaso) {
-    this.vasoProvider.deleteVaso(vaso.id)
-    this.limpaVasoToast()
-    this.ionViewWillEnter()
+    setTimeout(() => {
+      this.vasoProvider.deleteVaso(vaso.id)
+      this.limpaVasoToast()
+      this.ionViewWillEnter()
+    }, 1500);
   }
 
   limpaVasoToast() {

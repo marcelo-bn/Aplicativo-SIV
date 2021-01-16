@@ -10,8 +10,13 @@ export class InformacaoProvider {
   constructor(public http: HttpClient) {}
 
 
+  getStart(){
+    return this.http.get('https://projeto-siv.herokuapp.com/');    
+  }
+
   getInfo(){
     return this.http.get('https://projeto-siv.herokuapp.com/informacao');    
   }
+
 
 }

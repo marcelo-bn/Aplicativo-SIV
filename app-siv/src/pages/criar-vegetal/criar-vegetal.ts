@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { VegetalProvider} from '../../providers/vegetal/vegetal';
-import { CadastroPage} from '../cadastro/cadastro';
 
 @IonicPage()
 @Component({
@@ -22,24 +21,31 @@ export class CriarVegetalPage {
   ionViewDidLoad() {}
 
   criaVegetal(nome,tempIdeal,umiIdeal) {
-    
+    let aux = true
+
     if ((nome == undefined) || (tempIdeal == undefined) || (umiIdeal == undefined)) {
-        this.erroToast()
+        aux = false
     }
     else if (this.verificaNomeVegetal(nome)) {
-      this.erroToast()
+      aux = false
     }
     else {
       nome = nome.toLowerCase()
       this.vegetalProvider.postVegetal(nome,tempIdeal,umiIdeal)
-      this.sucessoToast()
     }
-    this.nome = ""
-    this.tempIdeal = ""
-    this.umiIdeal = ""
+    
+    setTimeout(() => {
+      if (aux) {
+        this.sucessoToast()
+      } else {
+        this.erroToast()
+      }
+      this.nome = ""
+      this.tempIdeal = ""
+      this.umiIdeal = ""
+      this.navCtrl.pop()
+    }, 2000);
 
-    //this.navCtrl.push(CadastroPage)
-    this.navCtrl.pop()
   }
 
   sucessoToast() {

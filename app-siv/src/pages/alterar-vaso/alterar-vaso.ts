@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
-import { CadastroPage } from '../cadastro/cadastro'
 import { VasoProvider } from '../../providers/vaso/vaso';
 import { VegetalProvider } from '../../providers/vegetal/vegetal';
 
@@ -30,18 +29,30 @@ export class AlterarVasoPage {
   
   // Método PUT Vaso
   alterarVaso(vaso,nomeVegetal) {
+    let aux = true
+
     if ((nomeVegetal == undefined) || (nomeVegetal == "")) {
-      this.erroToast()
+      aux = false
     }
     else if (this.verificaNomeVegetal(nomeVegetal)) {
       this.vasoProvider.putVaso(vaso.id,nomeVegetal.toLowerCase())
-      this.sucessoToast() 
     } else {
-      this.erroToast()
+      aux = false
     }
-    this.nomeVegetal = ""
+    //this.nomeVegetal = ""
     //this.navCtrl.push(CadastroPage)
-    this.navCtrl.pop()
+
+    // Esse tempo é necessário para ocorrer o processo HTTP
+    setTimeout(() => {
+      if (aux) {
+        this.sucessoToast()
+      } else {
+        this.erroToast()
+      }
+      this.nomeVegetal = ""
+      this.navCtrl.pop()
+    }, 2000);
+   
   }
 
 

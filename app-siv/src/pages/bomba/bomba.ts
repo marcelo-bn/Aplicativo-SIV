@@ -29,35 +29,51 @@ export class BombaPage {
   }
   
   acionaBomba(idVaso){
-    
+    let aux = true
+    let msg: any
+
     if (idVaso == 1) {
       if (this.vaso1.status == 1) {
         if (this.tempoBomba1 != undefined && this.tempoBomba1 != "") {
             this.bombaProvider.putBomba(idVaso, this.tempoBomba1)
-            this.sucessoToast()
+            //this.sucessoToast()
         }
         else {
-          this.erroToast("Valor inválido!")
+          //this.erroToast("Valor inválido!")
+          aux = false
+          msg = "Valor inválido!"
         }
       } else {
-        this.erroToast("O vaso não está ativo!")
+        //this.erroToast("O vaso não está ativo!")
+        aux = false
+        msg = "O vaso não está ativo!"
       }
     } else {
       if (this.vaso2.status == 1) {
         if (this.tempoBomba2 != undefined && this.tempoBomba2 != "") {
           this.bombaProvider.putBomba(idVaso, this.tempoBomba2)
-          this.sucessoToast()
+          //this.sucessoToast()
         }
         else {
-          this.erroToast("Valor inválido!")
+          aux = false
+          msg = "Valor inválido!"
         }
       } else {
-        this.erroToast("O vaso não está ativo!")
+        aux = false
+        msg = "O vaso não está ativo!"
       }
     }
 
-    this.tempoBomba1 = ""
-    this.tempoBomba2 = ""
+    setTimeout(() => {
+      if (aux) {
+        this.sucessoToast()
+      } else {
+        this.erroToast(msg)
+      }
+      this.tempoBomba1 = ""
+      this.tempoBomba2 = ""
+      this.ionViewWillEnter()
+    }, 2000);
 
   }
 

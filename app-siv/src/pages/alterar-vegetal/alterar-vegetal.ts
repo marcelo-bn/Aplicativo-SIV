@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, ToastController, NavController, NavParams } from 'ionic-angular';
 import { VegetalProvider } from '../../providers/vegetal/vegetal';
-import { CadastroPage} from '../cadastro/cadastro';
 
 @IonicPage()
 @Component({
@@ -22,31 +21,31 @@ export class AlterarVegetalPage {
   ionViewDidLoad() {}
 
   alteraVegetal(vegetal,novaTempIdeal,novaUmiIdeal) {
+    let aux = true
 
     if (novaTempIdeal == undefined && novaUmiIdeal == undefined) {
-      this.erroToast()
-      //console.log(vegetal.nome,vegetal.tempIdeal,vegetal.umidadeIdeal)
+      aux = false
     }
     else if (novaTempIdeal != undefined && novaUmiIdeal != undefined) {
       this.vegetalProvider.putVegetal(vegetal.nome,novaTempIdeal,novaUmiIdeal)
-      this.sucessoToast()
-      //console.log(vegetal.nome,novaTempIdeal,novaUmiIdeal)
     }
     else if (novaTempIdeal == undefined) {
       this.vegetalProvider.putVegetal(vegetal.nome,vegetal.tempIdeal,novaUmiIdeal)
-      this.sucessoToast()
-      //console.log(vegetal.nome,vegetal.tempIdeal,novaUmiIdeal)
     }
     else if (novaUmiIdeal == undefined ) {
       this.vegetalProvider.putVegetal(vegetal.nome,novaTempIdeal,vegetal.umidadeIdeal)
-      this.sucessoToast()
-      //console.log(vegetal.nome,novaTempIdeal,vegetal.umidadeIdeal)
     }
-
-    this.novaTempIdeal = ""
-    this.novaUmiIdeal = ""
-    setTimeout(() => { console.log("World!"); }, 3000);
-    this.navCtrl.pop() // Volta para a página de cadastro
+    
+    setTimeout(() => {
+      if (aux) {
+        this.sucessoToast()
+      } else {
+        this.erroToast()
+      }
+      this.novaTempIdeal = ""
+      this.novaUmiIdeal = ""
+      this.navCtrl.pop()
+    }, 2000);
 
   }
 
