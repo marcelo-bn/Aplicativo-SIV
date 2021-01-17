@@ -41,8 +41,8 @@ export class VasoProvider {
 
     let data_JSON = JSON.stringify(data)
 
-    const headers = new HttpHeaders()
-    .set("Content-Type", "application/json");
+    //const headers = new HttpHeaders()
+    //.set("Content-Type", "application/json");
 
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }), body: data_JSON

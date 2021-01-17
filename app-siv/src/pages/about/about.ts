@@ -15,11 +15,10 @@ export class AboutPage {
 
   }
 
-
   ionViewWillEnter(){
-    this.informacaoProvider.getInfo().subscribe(info => {
+    this.informacaoProvider.getStart().subscribe(info => {
       this.info = info
-      this.info = this.info.lista_info
+      //this.info = this.info.lista_info
       console.log(this.info)
     });
     

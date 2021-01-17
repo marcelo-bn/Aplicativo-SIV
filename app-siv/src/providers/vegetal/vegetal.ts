@@ -57,6 +57,33 @@ export class VegetalProvider {
                                     }
                                 );
                                                
+  }
+
+  deleteVegetal(vegetal) {
+    let data = {
+      nome : vegetal
+    };
+
+    let data_JSON = JSON.stringify(data)
+
+    //const headers = new HttpHeaders()
+    //.set("Content-Type", "application/json");
+
+    const httpOptions = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }), body: data_JSON
+     };
+
+  
+    return this.http.delete("https://projeto-siv.herokuapp.com/vegetal", httpOptions)
+                            .subscribe(
+                                (val) => {
+                                    console.log("DELETE realizado!", 
+                                                val);
+                                },
+                                response => {
+                                    console.log("DELETE não realizado!", response);
+                                }
+                              );
 
   }
 

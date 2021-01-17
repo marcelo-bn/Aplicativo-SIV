@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
+import { NavController, ToastController, AlertController } from 'ionic-angular';
 import { VegetalProvider } from '../../providers/vegetal/vegetal';
 import { VasoProvider } from '../../providers/vaso/vaso';
 import { AlterarVegetalPage } from '../alterar-vegetal/alterar-vegetal';
@@ -17,7 +17,7 @@ export class CadastroPage {
   vasos: any;
 
   constructor(public navCtrl: NavController, private vegetalProvider: VegetalProvider, private vasoProvider: VasoProvider, 
-    public toastCtrl: ToastController) {
+    public toastCtrl: ToastController, public alertCtrl: AlertController) {
    
   }
 
@@ -36,23 +36,87 @@ export class CadastroPage {
     this.navCtrl.push(AlterarVasoPage, {vaso: vaso})
   }
 
-  // Método DELETE Vaso
-  limpaVaso(vaso) {
-    setTimeout(() => {
-      this.vasoProvider.deleteVaso(vaso.id)
-      this.limpaVasoToast()
-      this.ionViewWillEnter()
-    }, 1500);
+
+  // MÉTODO DELETE Vegetal
+  limpaVegetal(vegetal) {
+    const confirm = this.alertCtrl.create({
+      title: 'Excluir vegetal?',
+      message: 'Realmente deseja excluir o vegetal?',
+      buttons: [
+        {
+          text: 'Não',
+          handler: () => {
+            this.limpaVasoToast('Nada foi alterado!') // Utiliza o mesmo Toast do Vaso
+          }
+        },
+        {
+          text: 'Sim',
+          handler: () => {
+            if (this.verificaVegetalAtivo(vegetal)==2) {
+              setTimeout(() => {
+                this.vegetalProvider.deleteVegetal(vegetal)
+                this.limpaVasoToast('Vegetal excluído!')
+                this.ionViewWillEnter()
+              }, 2000);
+            } else {
+              this.erroLimpaVegetalToast()
+            }
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 
-  limpaVasoToast() {
+
+  // Método DELETE Vaso
+  limpaVaso(vaso) {
+    const confirm = this.alertCtrl.create({
+      title: 'Desativar vaso?',
+      message: 'Realmente deseja desativar o vaso?',
+      buttons: [
+        {
+          text: 'Não',
+          handler: () => {
+            this.limpaVasoToast('Nada foi alterado!')
+          }
+        },
+        {
+          text: 'Sim',
+          handler: () => {
+            setTimeout(() => {
+              this.vasoProvider.deleteVaso(vaso.id)
+              this.limpaVasoToast('Vaso desativado!')
+              this.ionViewWillEnter()
+            }, 1500);
+          }
+        }
+      ]
+    });
+    confirm.present();
+  }
+
+  // Toast do DELETE Vaso
+  limpaVasoToast(msg) {
     let toast = this.toastCtrl.create({
-      message: 'Vaso desativado!',
+      message: msg,
       duration: 3000,
       cssClass: 'toast-limpa'
     });
     toast.present();
   }
+
+
+  // Toas para erro ao deletar Vegetal
+  erroLimpaVegetalToast() {
+    let toast = this.toastCtrl.create({
+      message: 'O Vegetal ainda está sendo utilizado!',
+      duration: 3000,
+      cssClass: 'toast-erro-vegetal'
+    });
+    toast.present();
+  }
+
 
   // Métodos GET Vegetal e Vaso
   ionViewWillEnter(){
@@ -64,9 +128,23 @@ export class CadastroPage {
     this.vasoProvider.getVaso().subscribe(info => {
       this.vasos = info
       this.vasos = this.vasos.lista_vasos
+      console.log(this.vasos)
     });
     
   }
 
+
+  // Verifica se é possível deletar o vegetal
+  verificaVegetalAtivo(vegetal) {
+    let aux = 0
+
+    for (var item of this.vasos) {
+      if (item.vegetal != vegetal) {
+        aux++
+      }
+    }
+    
+    return aux
+  }
 
 }

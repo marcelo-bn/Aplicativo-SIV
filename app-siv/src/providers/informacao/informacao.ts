@@ -11,7 +11,7 @@ export class InformacaoProvider {
 
 
   getStart(){
-    return this.http.get('https://projeto-siv.herokuapp.com/');    
+    return this.http.get('https://projeto-siv.herokuapp.com/ativo');    
   }
 
   getInfo(){

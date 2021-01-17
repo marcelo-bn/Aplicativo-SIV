@@ -28046,6 +28046,10 @@ button#buttonBomba {
   background-color: orange;
 }
 
+.toast-erro-vegetal .toast-message {
+  background-color: red;
+}
+
 .toast-succ .toast-message {
   background-color: #7dc567;
 }

@@ -27,7 +27,7 @@ var BombaPageModule = /** @class */ (function () {
                 __WEBPACK_IMPORTED_MODULE_2__bomba__["a" /* BombaPage */],
             ],
             imports: [
-                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__bomba__["a" /* BombaPage */]),
+                __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_2__bomba__["a" /* BombaPage */]),
             ],
         })
     ], BombaPageModule);
