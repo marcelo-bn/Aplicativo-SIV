@@ -10,34 +10,70 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <h4 style="text-align: center;"> Vaso 1</h4>
-  <canvas baseChart [datasets]="chartDataV1" [chartType]="chartTypeV1" [labels]="chartLabelsV1"
-  [options]="chartOption"></canvas>
+<ion-content>
+
+  <ion-slides (ionSlideDidChange)="slideChanged()">
+
+    <ion-slide>
+        <h4 style="text-align: center;"> Vaso 1</h4>
+        <canvas baseChart [datasets]="vaso1TempData" [chartType]="vaso1TempType" [labels]="vaso1TempLabels"
+        [options]="chartOption" [colors]="vaso1TempColors"></canvas>
+          
+        <ion-list>
+          <ion-item>
+            <ion-label>Tipo do gráfico</ion-label>
+            <ion-select [(ngModel)]="vaso1TempType">
+              <ion-option value="line">Linha</ion-option>
+              <ion-option value="bar">Barra</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-list> 
+
+        <canvas baseChart [datasets]="vaso1UmiData" [chartType]="vaso1UmiType" [labels]="vaso1UmiLabels"
+        [options]="chartOption"  [colors]="vaso1UmiColors"></canvas>
+          
+        <ion-list>
+          <ion-item>
+            <ion-label>Tipo do gráfico</ion-label>
+            <ion-select [(ngModel)]="vaso1UmiType">
+              <ion-option value="line">Linha</ion-option>
+              <ion-option value="bar">Barra</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-list> 
+    </ion-slide>
     
-  <ion-list>
-    <ion-item>
-      <ion-label>Tipo do gráfico</ion-label>
-      <ion-select [(ngModel)]="chartTypeV1">
-        <ion-option value="line">Linha</ion-option>
-        <ion-option value="bar">Barra</ion-option>
-      </ion-select>
-    </ion-item>
- </ion-list> 
+    <ion-slide>
+      <h4 style="text-align: center;"> Vaso 2</h4>
+        <canvas baseChart [datasets]="vaso2TempData" [chartType]="vaso2TempType" [labels]="vaso2TempLabels"
+        [options]="chartOption" [colors]="vaso2TempColors"></canvas>
+          
+        <ion-list>
+          <ion-item>
+            <ion-label>Tipo do gráfico</ion-label>
+            <ion-select [(ngModel)]="vaso2TempType">
+              <ion-option value="line">Linha</ion-option>
+              <ion-option value="bar">Barra</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-list> 
 
- <h4 style="text-align: center;"> Vaso 2</h4>
-  <canvas baseChart [datasets]="chartDataV2" [chartType]="chartTypeV2" [labels]="chartLabelsV2"
-  [options]="chartOption"></canvas>
+        <canvas baseChart [datasets]="vaso2UmiData" [chartType]="vaso2UmiType" [labels]="vaso2UmiLabels"
+        [options]="chartOption" [colors]="vaso2UmiColors"></canvas>
+          
+        <ion-list>
+          <ion-item>
+            <ion-label>Tipo do gráfico</ion-label>
+            <ion-select [(ngModel)]="vaso2UmiType">
+              <ion-option value="line">Linha</ion-option>
+              <ion-option value="bar">Barra</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-list> 
+    </ion-slide>
 
-  <ion-list>
-    <ion-item>
-      <ion-label>Tipo do gráfico</ion-label>
-      <ion-select [(ngModel)]="chartTypeV2">
-        <ion-option value="line">Linha</ion-option>
-        <ion-option value="bar">Barra</ion-option>
-      </ion-select>
-    </ion-item>
- </ion-list> 
+  </ion-slides>
+
 
 </ion-content>
 
