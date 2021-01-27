@@ -31,7 +31,7 @@ export class GraficoPage {
   public vaso1UmiLabels: Label[];
   public vaso1UmiColors: Color[] 
   = [
-      {backgroundColor: 'rgba(108, 232, 62, 0.7)', borderColor:  'rgba(108, 232, 62, 0.7)' },
+      {backgroundColor: 'rgba(108, 232, 62, 0.3)', borderColor:  'rgba(108, 232, 62, 0.3)' },
       {backgroundColor: 'rgba(255, 255, 0, 0.4)', borderColor: 'rgba(255, 255, 0, 0.4)'}
     ];
   
@@ -49,7 +49,7 @@ export class GraficoPage {
   public vaso2UmiLabels: Label[];
   public vaso2UmiColors:  Color[] 
   = [
-      {backgroundColor: 'rgba(108, 232, 62, 0.7)', borderColor:  'rgba(108, 232, 62, 0.7)' },
+      {backgroundColor: 'rgba(108, 232, 62, 0.3)', borderColor:  'rgba(108, 232, 62, 0.3)' },
       {backgroundColor: 'rgba(255, 255, 0, 0.4)', borderColor: 'rgba(255, 255, 0, 0.4)'}
     ];
 
@@ -61,8 +61,7 @@ export class GraficoPage {
 
   // Animação dos slides
   slideChanged() {
-    let currentIndex = this.slides.getActiveIndex();
-    console.log('Current index is', currentIndex);
+    this.slides.getActiveIndex();
   }
 
   ionViewWillEnter() {
@@ -94,6 +93,7 @@ export class GraficoPage {
   }
 
   carregaDados() {
+
     this.vaso1TempLabels = []
     this.vaso1TempData[0].data = []
     this.vaso1TempData[1].data = [] // temp ideal
@@ -110,52 +110,58 @@ export class GraficoPage {
     this.vaso2UmiData[0].data = []
     this.vaso2UmiData[1].data = [] // umi ideal
 
-    // Carrega dados de temperatura e umidade
-    for (let item of this.info) {
-      
-      if (item.idVaso == 1) {
-        if (item.temperatura != "") {
-           (this.vaso1TempData[0].data as number []).push(item.temperatura)
-           if (item.umidade != "") {
-            (this.vaso1UmiData[0].data as number []).push(item.umidade)
-           }
-        }
-        this.vaso1TempLabels.push(item.data)
-      }
-      
-      else {
-        if (item.temperatura != "") {
-          (this.vaso2TempData[0].data as number []).push(item.temperatura)
-          if (item.umidade != "") {
-           (this.vaso2UmiData[0].data as number []).push(item.umidade)
+    
+    try {
+        // Carrega dados de temperatura e umidade
+        for (let item of this.info) {
+          
+          if (item.idVaso == 1) {
+            if (item.temperatura != "") {
+              (this.vaso1TempData[0].data as number []).push(item.temperatura)
+              if (item.umidade != "") {
+                (this.vaso1UmiData[0].data as number []).push(item.umidade)
+              }
+            }
+            this.vaso1TempLabels.push(item.data)
           }
-       }
-       this.vaso2TempLabels.push(item.data)
-      }
-
-    }
-
-    // Carrega dados de temperatura e umidade IDEAIS
-    for (let item of this.info) {
-      if (item.idVaso == 1) {
-        if (item.temperatura != "") {
-           (this.vaso1TempData[1].data as number []).push(25)
-           if (item.umidade != "") {
-            (this.vaso1UmiData[1].data as number []).push(55)
-           }
-        }
-      }
-      else {
-        if (item.temperatura != "") {
-          (this.vaso2TempData[1].data as number []).push(25)
-          if (item.umidade != "") {
-           (this.vaso2UmiData[1].data as number []).push(55)
+          
+          else {
+            if (item.temperatura != "") {
+              (this.vaso2TempData[0].data as number []).push(item.temperatura)
+              if (item.umidade != "") {
+              (this.vaso2UmiData[0].data as number []).push(item.umidade)
+              }
           }
-       }
-      }
-    }
+          this.vaso2TempLabels.push(item.data)
+          }
 
-    this.info = ""
+        }
+
+        // Carrega dados de temperatura e umidade IDEAIS
+        for (let item of this.info) {
+          if (item.idVaso == 1) {
+            if (item.temperatura != "") {
+              (this.vaso1TempData[1].data as number []).push(25)
+              if (item.umidade != "") {
+                (this.vaso1UmiData[1].data as number []).push(55)
+              }
+            }
+          }
+          else {
+            if (item.temperatura != "") {
+              (this.vaso2TempData[1].data as number []).push(25)
+              if (item.umidade != "") {
+              (this.vaso2UmiData[1].data as number []).push(55)
+              }
+          }
+          }
+        }
+    } catch (error) {
+      console.log('erro')
+    } finally {
+      this.info = ""
+    }
+    
     return true
   }
   

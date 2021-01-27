@@ -94,9 +94,9 @@ var AlterarVasoPage = /** @class */ (function () {
     };
     AlterarVasoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-alterar-vaso',template:/*ion-inline-start:"/Users/marcelobittencourt/Documents/app-siv/src/pages/alterar-vaso/alterar-vaso.html"*/'<!--\n  Generated template for the AlterarVasoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title style="text-align: center;">Alterar Vaso</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <div *ngIf="vaso.vegetal != null; else vazio ">\n    \n    <h3 style="text-align: center; color:  rgb(125, 197, 103);">Vegetal do Vaso</h3>\n    <ion-card id="cardSpec">\n       <strong>Vegetal presente: </strong> {{vaso.vegetal}} <br>\n    </ion-card>\n\n  </div>\n\n  <ng-template #vazio>\n    <h3 style="text-align: center; color:  rgb(125, 197, 103);">Vegetal do Vaso</h3>\n    <ion-card id="cardSpec">\n      <strong>Vegetal presente: </strong> Nenhum vegetal cadastrado <br>\n    </ion-card>\n  </ng-template>\n\n  <div>\n    <ion-input type="text" text-center [(ngModel)]="nomeVegetal" placeholder="Insira o nome do novo vegetal" id="placeholderSpec"></ion-input>\n    <div style="text-align: center">\n      <button style="background-color: rgb(125, 197, 103)" id="buttonalteraVaso" ion-button (click)="alterarVaso(vaso,nomeVegetal)">Alterar</button>\n    </div>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/marcelobittencourt/Documents/app-siv/src/pages/alterar-vaso/alterar-vaso.html"*/,
+            selector: 'page-alterar-vaso',template:/*ion-inline-start:"/Users/marcelobittencourt/git/Aplicativo-SIV/app-siv/src/pages/alterar-vaso/alterar-vaso.html"*/'<!--\n  Generated template for the AlterarVasoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title style="text-align: center;">Alterar Vaso</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <div *ngIf="vaso.vegetal != null; else vazio ">\n    \n    <h3 style="text-align: center; color:  rgb(125, 197, 103);">Vegetal do Vaso</h3>\n    <ion-card id="cardSpec">\n       <strong>Vegetal presente: </strong> {{vaso.vegetal}} <br>\n    </ion-card>\n\n  </div>\n\n  <ng-template #vazio>\n    <h3 style="text-align: center; color:  rgb(125, 197, 103);">Vegetal do Vaso</h3>\n    <ion-card id="cardSpec">\n      <strong>Vegetal presente: </strong> Nenhum vegetal cadastrado <br>\n    </ion-card>\n  </ng-template>\n\n  <div>\n    <ion-input type="text" text-center [(ngModel)]="nomeVegetal" placeholder="Insira o nome do novo vegetal" id="placeholderSpec"></ion-input>\n    <div style="text-align: center">\n      <button style="background-color: rgb(125, 197, 103)" id="buttonalteraVaso" ion-button (click)="alterarVaso(vaso,nomeVegetal)">Alterar</button>\n    </div>\n  </div>\n\n</ion-content>\n'/*ion-inline-end:"/Users/marcelobittencourt/git/Aplicativo-SIV/app-siv/src/pages/alterar-vaso/alterar-vaso.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */],
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */],
             __WEBPACK_IMPORTED_MODULE_2__providers_vaso_vaso__["a" /* VasoProvider */], __WEBPACK_IMPORTED_MODULE_3__providers_vegetal_vegetal__["a" /* VegetalProvider */]])
     ], AlterarVasoPage);
     return AlterarVasoPage;
@@ -180,10 +180,10 @@ var AlterarVegetalPage = /** @class */ (function () {
     };
     AlterarVegetalPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-alterar-vegetal',template:/*ion-inline-start:"/Users/marcelobittencourt/Documents/app-siv/src/pages/alterar-vegetal/alterar-vegetal.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title style="text-align: center;">Alterar Vegetal</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <div *ngIf="vegetal">\n    <h3 style="text-align: center; color:  rgb(125, 197, 103);">Dados do Vegetal</h3>\n    <ion-card id="cardSpec">\n       <strong>Nome: </strong> {{vegetal.nome}} <br>\n       <strong>Temperatura ideal (Celsius): </strong> {{vegetal.tempIdeal}} <br>\n       <strong>Umidade ideal (%): </strong> {{vegetal.umidadeIdeal}} <br>\n    </ion-card>\n  </div>\n  \n  <div>\n    <ion-input max="50" min= "0" type="number" text-center [(ngModel)]="novaTempIdeal" placeholder="Nova temperatura ideal" id="placeholderSpec"></ion-input>\n    <ion-input max="100" min= "0" type="number" text-center [(ngModel)]="novaUmiIdeal" placeholder="Nova umidade ideal" id="placeholderSpec"></ion-input>\n    <div style="text-align: center">\n      <button style="background-color: rgb(125, 197, 103)" id="buttonAlteraVegetal" ion-button (click)="alteraVegetal(vegetal,novaTempIdeal,novaUmiIdeal)">Alterar</button>\n    </div>\n  </div>\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/marcelobittencourt/Documents/app-siv/src/pages/alterar-vegetal/alterar-vegetal.html"*/,
+            selector: 'page-alterar-vegetal',template:/*ion-inline-start:"/Users/marcelobittencourt/git/Aplicativo-SIV/app-siv/src/pages/alterar-vegetal/alterar-vegetal.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title style="text-align: center;">Alterar Vegetal</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <div *ngIf="vegetal">\n    <h3 style="text-align: center; color:  rgb(125, 197, 103);">Dados do Vegetal</h3>\n    <ion-card id="cardSpec">\n       <strong>Nome: </strong> {{vegetal.nome}} <br>\n       <strong>Temperatura ideal (Celsius): </strong> {{vegetal.tempIdeal}} <br>\n       <strong>Umidade ideal (%): </strong> {{vegetal.umidadeIdeal}} <br>\n    </ion-card>\n  </div>\n  \n  <div>\n    <ion-input max="50" min= "0" type="number" text-center [(ngModel)]="novaTempIdeal" placeholder="Nova temperatura ideal" id="placeholderSpec"></ion-input>\n    <ion-input max="100" min= "0" type="number" text-center [(ngModel)]="novaUmiIdeal" placeholder="Nova umidade ideal" id="placeholderSpec"></ion-input>\n    <div style="text-align: center">\n      <button style="background-color: rgb(125, 197, 103)" id="buttonAlteraVegetal" ion-button (click)="alteraVegetal(vegetal,novaTempIdeal,novaUmiIdeal)">Alterar</button>\n    </div>\n  </div>\n\n\n</ion-content>\n'/*ion-inline-end:"/Users/marcelobittencourt/git/Aplicativo-SIV/app-siv/src/pages/alterar-vegetal/alterar-vegetal.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_vegetal_vegetal__["a" /* VegetalProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */]])
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */]])
     ], AlterarVegetalPage);
     return AlterarVegetalPage;
 }());
@@ -295,9 +295,9 @@ var BombaPage = /** @class */ (function () {
     };
     BombaPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-bomba',template:/*ion-inline-start:"/Users/marcelobittencourt/Documents/app-siv/src/pages/bomba/bomba.html"*/'<!--\n  Generated template for the SettingsPage page.\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title style="text-align: center;">Bomba</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n  <ion-card *ngIf="vaso1" id="cardspec">\n    <h1>Vaso 1</h1>  \n    <h2>O último acionamento ocorreu em: <strong>{{vaso1["ultimaBomba"]}}</strong></h2>\n    <ion-input max="10" min= "1" type="number" text-center [(ngModel)]="tempoBomba1" placeholder="Insira o tempo de funcionamento da bomba" id="placeholderSpec"></ion-input>\n    <div style="text-align: center">\n      <button id="buttonBomba" ion-button (click)="acionaBomba(1)">Acionar</button>\n    </div>\n  </ion-card>\n\n  <ion-card *ngIf="vaso2" id="cardspec">\n    <h1>Vaso 2</h1>  \n    <h2>O último acionamento ocorreu em: <strong>{{vaso2["ultimaBomba"]}}</strong></h2>\n    <ion-input max="10" min= "1" type="number" text-center [(ngModel)]="tempoBomba2" placeholder="Insira o tempo de funcionamento da bomba" id="placeholderSpec"></ion-input>\n    <div style="text-align: center">\n      <button id="buttonBomba" ion-button (click)="acionaBomba(2)">Acionar</button>\n    </div>\n  </ion-card>\n  \n  \n</ion-content>\n'/*ion-inline-end:"/Users/marcelobittencourt/Documents/app-siv/src/pages/bomba/bomba.html"*/,
+            selector: 'page-bomba',template:/*ion-inline-start:"/Users/marcelobittencourt/git/Aplicativo-SIV/app-siv/src/pages/bomba/bomba.html"*/'<!--\n  Generated template for the SettingsPage page.\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title style="text-align: center;">Bomba</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n  <ion-card *ngIf="vaso1" id="cardspec">\n    <h1>Vaso 1</h1>  \n    <h2>O último acionamento ocorreu em: <strong>{{vaso1["ultimaBomba"]}}</strong></h2>\n    <ion-input max="10" min= "1" type="number" text-center [(ngModel)]="tempoBomba1" placeholder="Insira o tempo de funcionamento da bomba" id="placeholderSpec"></ion-input>\n    <div style="text-align: center">\n      <button id="buttonBomba" ion-button (click)="acionaBomba(1)">Acionar</button>\n    </div>\n  </ion-card>\n\n  <ion-card *ngIf="vaso2" id="cardspec">\n    <h1>Vaso 2</h1>  \n    <h2>O último acionamento ocorreu em: <strong>{{vaso2["ultimaBomba"]}}</strong></h2>\n    <ion-input max="10" min= "1" type="number" text-center [(ngModel)]="tempoBomba2" placeholder="Insira o tempo de funcionamento da bomba" id="placeholderSpec"></ion-input>\n    <div style="text-align: center">\n      <button id="buttonBomba" ion-button (click)="acionaBomba(2)">Acionar</button>\n    </div>\n  </ion-card>\n  \n  \n</ion-content>\n'/*ion-inline-end:"/Users/marcelobittencourt/git/Aplicativo-SIV/app-siv/src/pages/bomba/bomba.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_bomba_bomba__["a" /* BombaProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_bomba_bomba__["a" /* BombaProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */]])
     ], BombaPage);
     return BombaPage;
 }());
@@ -390,10 +390,10 @@ var CriarVegetalPage = /** @class */ (function () {
     };
     CriarVegetalPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-criar-vegetal',template:/*ion-inline-start:"/Users/marcelobittencourt/Documents/app-siv/src/pages/criar-vegetal/criar-vegetal.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title style="text-align: center;">Novo Vegetal</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <div>\n    <ion-input type="text" text-center [(ngModel)]="nome" placeholder="Nome" id="placeholderSpec"></ion-input>\n    <ion-input max="50" min= "0" type="number" text-center [(ngModel)]="tempIdeal" placeholder="Temperatura ideal" id="placeholderSpec"></ion-input>\n    <ion-input max="100" min= "0" type="number" text-center [(ngModel)]="umiIdeal" placeholder="Umidade ideal" id="placeholderSpec"></ion-input>\n    <div style="text-align: center">\n      <button style="background-color: rgb(125, 197, 103)" id="buttonCriarVegetal" ion-button (click)="criaVegetal(nome,tempIdeal,umiIdeal)">CRIAR</button>\n    </div>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/Users/marcelobittencourt/Documents/app-siv/src/pages/criar-vegetal/criar-vegetal.html"*/,
+            selector: 'page-criar-vegetal',template:/*ion-inline-start:"/Users/marcelobittencourt/git/Aplicativo-SIV/app-siv/src/pages/criar-vegetal/criar-vegetal.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title style="text-align: center;">Novo Vegetal</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <div>\n    <ion-input type="text" text-center [(ngModel)]="nome" placeholder="Nome" id="placeholderSpec"></ion-input>\n    <ion-input max="50" min= "0" type="number" text-center [(ngModel)]="tempIdeal" placeholder="Temperatura ideal" id="placeholderSpec"></ion-input>\n    <ion-input max="100" min= "0" type="number" text-center [(ngModel)]="umiIdeal" placeholder="Umidade ideal" id="placeholderSpec"></ion-input>\n    <div style="text-align: center">\n      <button style="background-color: rgb(125, 197, 103)" id="buttonCriarVegetal" ion-button (click)="criaVegetal(nome,tempIdeal,umiIdeal)">CRIAR</button>\n    </div>\n  </div>\n</ion-content>\n'/*ion-inline-end:"/Users/marcelobittencourt/git/Aplicativo-SIV/app-siv/src/pages/criar-vegetal/criar-vegetal.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */], __WEBPACK_IMPORTED_MODULE_2__providers_vegetal_vegetal__["a" /* VegetalProvider */],
-            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */]])
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */]])
     ], CriarVegetalPage);
     return CriarVegetalPage;
 }());
@@ -469,10 +469,10 @@ var EmailPage = /** @class */ (function () {
     };
     EmailPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-email',template:/*ion-inline-start:"/Users/marcelobittencourt/Documents/app-siv/src/pages/email/email.html"*/'<!--\n  Generated template for the EmailPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title style="text-align: center;">CONTATO</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  \n    Nome:<br>\n    <ion-input type="text" [(ngModel)]="nome" placeholder="Escreva aqui"> </ion-input> <br> <br>\n    E-mail:<br>\n    <ion-input type="text" [(ngModel)]="email" placeholder="Escreva aqui"> </ion-input> <br> <br>\n    Descrição:<br> <br>\n    <ion-textarea [(ngModel)]="corpo" placeholder="Escreva aqui"></ion-textarea>\n    <div style="text-align: center">\n      <button style="background-color: rgb(125, 197, 103)" ion-button \n      (click)="enviarEmail(nome,email,corpo)">ENVIAR</button>\n    </div>\n    \n</ion-content>\n'/*ion-inline-end:"/Users/marcelobittencourt/Documents/app-siv/src/pages/email/email.html"*/,
+            selector: 'page-email',template:/*ion-inline-start:"/Users/marcelobittencourt/git/Aplicativo-SIV/app-siv/src/pages/email/email.html"*/'<!--\n  Generated template for the EmailPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title style="text-align: center;">CONTATO</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  \n    Nome:<br>\n    <ion-input type="text" [(ngModel)]="nome" placeholder="Escreva aqui"> </ion-input> <br> <br>\n    E-mail:<br>\n    <ion-input type="text" [(ngModel)]="email" placeholder="Escreva aqui"> </ion-input> <br> <br>\n    Descrição:<br> <br>\n    <ion-textarea [(ngModel)]="corpo" placeholder="Escreva aqui"></ion-textarea>\n    <div style="text-align: center">\n      <button style="background-color: rgb(125, 197, 103)" ion-button \n      (click)="enviarEmail(nome,email,corpo)">ENVIAR</button>\n    </div>\n    \n</ion-content>\n'/*ion-inline-end:"/Users/marcelobittencourt/git/Aplicativo-SIV/app-siv/src/pages/email/email.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* ToastController */], __WEBPACK_IMPORTED_MODULE_3__providers_email_email__["a" /* EmailProvider */]])
+            __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* ToastController */], __WEBPACK_IMPORTED_MODULE_3__providers_email_email__["a" /* EmailProvider */]])
     ], EmailPage);
     return EmailPage;
 }());
@@ -508,16 +508,37 @@ var GraficoPage = /** @class */ (function () {
         this.informacaoProvider = informacaoProvider;
         this.loadingCtrl = loadingCtrl;
         this.chartOption = { scales: { xAxes: [{ display: false }] } };
-        this.chartDataV1 = [{ data: [], label: 'temperatura (C)' }, { data: [], label: 'umidade (%)' }];
-        this.chartTypeV1 = 'line';
-        this.chartDataV2 = [{ data: [], label: 'temperatura (C)' }, { data: [], label: 'umidade (%)' }];
-        this.chartTypeV2 = 'line';
+        this.vaso1TempData = [{ data: [], label: 'temperatura (C)' }, { data: [], label: 'ideal' }];
+        this.vaso1TempType = 'line';
+        this.vaso1TempColors = [
+            { backgroundColor: 'rgba(123, 166, 255, 0.7)', borderColor: 'rgba(123, 166, 255, 0.7)' },
+            { backgroundColor: 'rgba(255, 255, 0, 0.4)', borderColor: 'rgba(255, 255, 0, 0.4)' }
+        ];
+        this.vaso1UmiData = [{ data: [], label: 'umidade (%)' }, { data: [], label: 'ideal' }];
+        this.vaso1UmiType = 'line';
+        this.vaso1UmiColors = [
+            { backgroundColor: 'rgba(108, 232, 62, 0.3)', borderColor: 'rgba(108, 232, 62, 0.3)' },
+            { backgroundColor: 'rgba(255, 255, 0, 0.4)', borderColor: 'rgba(255, 255, 0, 0.4)' }
+        ];
+        this.vaso2TempData = [{ data: [], label: 'temperatura (C)' }, { data: [], label: 'ideal' }];
+        this.vaso2TempType = 'line';
+        this.vaso2TempColors = [
+            { backgroundColor: 'rgba(123, 166, 255, 0.7)', borderColor: 'rgba(123, 166, 255, 0.7)' },
+            { backgroundColor: 'rgba(255, 255, 0, 0.4)', borderColor: 'rgba(255, 255, 0, 0.4)' }
+        ];
+        this.vaso2UmiData = [{ data: [], label: 'umidade (%)' }, { data: [], label: 'ideal' }];
+        this.vaso2UmiType = 'line';
+        this.vaso2UmiColors = [
+            { backgroundColor: 'rgba(108, 232, 62, 0.3)', borderColor: 'rgba(108, 232, 62, 0.3)' },
+            { backgroundColor: 'rgba(255, 255, 0, 0.4)', borderColor: 'rgba(255, 255, 0, 0.4)' }
+        ];
     }
+    // Animação dos slides
+    GraficoPage.prototype.slideChanged = function () {
+        this.slides.getActiveIndex();
+    };
     GraficoPage.prototype.ionViewWillEnter = function () {
         var _this = this;
-        this.chartLabelsV1 = [];
-        this.chartDataV1[0].data = [];
-        this.chartDataV1[1].data = [];
         this.informacaoProvider.getInfo().subscribe(function (info) {
             _this.info = info;
             _this.info = _this.info.lista_info;
@@ -538,48 +559,82 @@ var GraficoPage = /** @class */ (function () {
         }, 2000);
     };
     GraficoPage.prototype.carregaDados = function () {
-        this.chartLabelsV1 = [];
-        this.chartDataV1[0].data = [];
-        this.chartDataV1[1].data = [];
-        this.chartLabelsV2 = [];
-        this.chartDataV2[0].data = [];
-        this.chartDataV2[1].data = [];
-        for (var _i = 0, _a = this.info; _i < _a.length; _i++) {
-            var item = _a[_i];
-            if (item.idVaso == 1) {
-                if (item.temperatura != "") {
-                    this.chartDataV1[0].data.push(item.temperatura);
+        this.vaso1TempLabels = [];
+        this.vaso1TempData[0].data = [];
+        this.vaso1TempData[1].data = []; // temp ideal
+        this.vaso1UmiLabels = [];
+        this.vaso1UmiData[0].data = [];
+        this.vaso1UmiData[1].data = []; // umi ideal
+        this.vaso2TempLabels = [];
+        this.vaso2TempData[0].data = [];
+        this.vaso2TempData[1].data = []; // temp ideal
+        this.vaso2UmiLabels = [];
+        this.vaso2UmiData[0].data = [];
+        this.vaso2UmiData[1].data = []; // umi ideal
+        try {
+            // Carrega dados de temperatura e umidade
+            for (var _i = 0, _a = this.info; _i < _a.length; _i++) {
+                var item = _a[_i];
+                if (item.idVaso == 1) {
+                    if (item.temperatura != "") {
+                        this.vaso1TempData[0].data.push(item.temperatura);
+                        if (item.umidade != "") {
+                            this.vaso1UmiData[0].data.push(item.umidade);
+                        }
+                    }
+                    this.vaso1TempLabels.push(item.data);
                 }
-                this.chartDataV1[1].data.push(item.umidade);
-                this.chartLabelsV1.push(item.data);
+                else {
+                    if (item.temperatura != "") {
+                        this.vaso2TempData[0].data.push(item.temperatura);
+                        if (item.umidade != "") {
+                            this.vaso2UmiData[0].data.push(item.umidade);
+                        }
+                    }
+                    this.vaso2TempLabels.push(item.data);
+                }
             }
-            else {
-                if (item.temperatura != "") {
-                    this.chartDataV2[0].data.push(item.temperatura);
+            // Carrega dados de temperatura e umidade IDEAIS
+            for (var _b = 0, _c = this.info; _b < _c.length; _b++) {
+                var item = _c[_b];
+                if (item.idVaso == 1) {
+                    if (item.temperatura != "") {
+                        this.vaso1TempData[1].data.push(25);
+                        if (item.umidade != "") {
+                            this.vaso1UmiData[1].data.push(55);
+                        }
+                    }
                 }
-                this.chartDataV2[1].data.push(item.umidade);
-                this.chartLabelsV2.push(item.data);
+                else {
+                    if (item.temperatura != "") {
+                        this.vaso2TempData[1].data.push(25);
+                        if (item.umidade != "") {
+                            this.vaso2UmiData[1].data.push(55);
+                        }
+                    }
+                }
             }
         }
-        this.info = "";
+        catch (error) {
+            console.log('erro');
+        }
+        finally {
+            this.info = "";
+        }
         return true;
     };
     __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('lineCanvas'),
-        __metadata("design:type", Object)
-    ], GraficoPage.prototype, "lineCanvas", void 0);
-    __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])('lineCanvas2'),
-        __metadata("design:type", Object)
-    ], GraficoPage.prototype, "lineCanvas2", void 0);
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Slides */]),
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Slides */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Slides */]) === "function" && _a || Object)
+    ], GraficoPage.prototype, "slides", void 0);
     GraficoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-grafico',template:/*ion-inline-start:"/Users/marcelobittencourt/Documents/app-siv/src/pages/grafico/grafico.html"*/'<!--\n  Generated template for the GraficoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title style="text-align: center;">Gráficos</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h4 style="text-align: center;"> Vaso 1</h4>\n  <canvas baseChart [datasets]="chartDataV1" [chartType]="chartTypeV1" [labels]="chartLabelsV1"\n  [options]="chartOption"></canvas>\n    \n  <ion-list>\n    <ion-item>\n      <ion-label>Tipo do gráfico</ion-label>\n      <ion-select [(ngModel)]="chartTypeV1">\n        <ion-option value="line">Linha</ion-option>\n        <ion-option value="bar">Barra</ion-option>\n      </ion-select>\n    </ion-item>\n </ion-list> \n\n <h4 style="text-align: center;"> Vaso 2</h4>\n  <canvas baseChart [datasets]="chartDataV2" [chartType]="chartTypeV2" [labels]="chartLabelsV2"\n  [options]="chartOption"></canvas>\n\n  <ion-list>\n    <ion-item>\n      <ion-label>Tipo do gráfico</ion-label>\n      <ion-select [(ngModel)]="chartTypeV2">\n        <ion-option value="line">Linha</ion-option>\n        <ion-option value="bar">Barra</ion-option>\n      </ion-select>\n    </ion-item>\n </ion-list> \n\n</ion-content>\n\n'/*ion-inline-end:"/Users/marcelobittencourt/Documents/app-siv/src/pages/grafico/grafico.html"*/,
+            selector: 'page-grafico',template:/*ion-inline-start:"/Users/marcelobittencourt/git/Aplicativo-SIV/app-siv/src/pages/grafico/grafico.html"*/'<!--\n  Generated template for the GraficoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title style="text-align: center;">Gráficos</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n  <ion-slides (ionSlideDidChange)="slideChanged()">\n\n    <ion-slide>\n        <h4 style="text-align: center;"> Vaso 1</h4>\n        <canvas baseChart [datasets]="vaso1TempData" [chartType]="vaso1TempType" [labels]="vaso1TempLabels"\n        [options]="chartOption" [colors]="vaso1TempColors"></canvas>\n          \n        <ion-list>\n          <ion-item>\n            <ion-label>Tipo do gráfico</ion-label>\n            <ion-select [(ngModel)]="vaso1TempType">\n              <ion-option value="line">Linha</ion-option>\n              <ion-option value="bar">Barra</ion-option>\n            </ion-select>\n          </ion-item>\n        </ion-list> \n\n        <canvas baseChart [datasets]="vaso1UmiData" [chartType]="vaso1UmiType" [labels]="vaso1UmiLabels"\n        [options]="chartOption"  [colors]="vaso1UmiColors"></canvas>\n          \n        <ion-list>\n          <ion-item>\n            <ion-label>Tipo do gráfico</ion-label>\n            <ion-select [(ngModel)]="vaso1UmiType">\n              <ion-option value="line">Linha</ion-option>\n              <ion-option value="bar">Barra</ion-option>\n            </ion-select>\n          </ion-item>\n        </ion-list> \n    </ion-slide>\n    \n    <ion-slide>\n      <h4 style="text-align: center;"> Vaso 2</h4>\n        <canvas baseChart [datasets]="vaso2TempData" [chartType]="vaso2TempType" [labels]="vaso2TempLabels"\n        [options]="chartOption" [colors]="vaso2TempColors"></canvas>\n          \n        <ion-list>\n          <ion-item>\n            <ion-label>Tipo do gráfico</ion-label>\n            <ion-select [(ngModel)]="vaso2TempType">\n              <ion-option value="line">Linha</ion-option>\n              <ion-option value="bar">Barra</ion-option>\n            </ion-select>\n          </ion-item>\n        </ion-list> \n\n        <canvas baseChart [datasets]="vaso2UmiData" [chartType]="vaso2UmiType" [labels]="vaso2UmiLabels"\n        [options]="chartOption" [colors]="vaso2UmiColors"></canvas>\n          \n        <ion-list>\n          <ion-item>\n            <ion-label>Tipo do gráfico</ion-label>\n            <ion-select [(ngModel)]="vaso2UmiType">\n              <ion-option value="line">Linha</ion-option>\n              <ion-option value="bar">Barra</ion-option>\n            </ion-select>\n          </ion-item>\n        </ion-list> \n    </ion-slide>\n\n  </ion-slides>\n\n\n</ion-content>\n\n'/*ion-inline-end:"/Users/marcelobittencourt/git/Aplicativo-SIV/app-siv/src/pages/grafico/grafico.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_informacao_informacao__["a" /* InformacaoProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]])
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__providers_informacao_informacao__["a" /* InformacaoProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_informacao_informacao__["a" /* InformacaoProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]) === "function" && _e || Object])
     ], GraficoPage);
     return GraficoPage;
+    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=grafico.js.map
@@ -621,7 +676,7 @@ var InformacaoPage = /** @class */ (function () {
     };
     InformacaoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-informacao',template:/*ion-inline-start:"/Users/marcelobittencourt/Documents/app-siv/src/pages/informacao/informacao.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title style="text-align: center;">Informação</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <table id="tabelaspec">\n   \n    <tr>\n      <th>Vaso</th>\n      <th>Vegetal</th>\n      <th>Temp.</th>\n      <th>Umidade</th>\n      <th>Data</th>\n    </tr>\n    <ng-container *ngFor="let item of info">\n      <tr>\n        <td>{{item.idVaso}}</td>\n        <td>{{item.nomeVegetal}}</td>\n        <td>{{item.temperatura}}</td>\n        <td>{{item.umidade}}</td>\n        <td>{{item.data}}</td>\n      </tr>\n    </ng-container>\n  </table> \n</ion-content>\n'/*ion-inline-end:"/Users/marcelobittencourt/Documents/app-siv/src/pages/informacao/informacao.html"*/,
+            selector: 'page-informacao',template:/*ion-inline-start:"/Users/marcelobittencourt/git/Aplicativo-SIV/app-siv/src/pages/informacao/informacao.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title style="text-align: center;">Informação</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <table id="tabelaspec">\n   \n    <tr>\n      <th>Vaso</th>\n      <th>Vegetal</th>\n      <th>Temp.</th>\n      <th>Umidade</th>\n      <th>Data</th>\n    </tr>\n    <ng-container *ngFor="let item of info">\n      <tr>\n        <td>{{item.idVaso}}</td>\n        <td>{{item.nomeVegetal}}</td>\n        <td>{{item.temperatura}}</td>\n        <td>{{item.umidade}}</td>\n        <td>{{item.data}}</td>\n      </tr>\n    </ng-container>\n  </table> \n</ion-content>\n'/*ion-inline-end:"/Users/marcelobittencourt/git/Aplicativo-SIV/app-siv/src/pages/informacao/informacao.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_informacao_informacao__["a" /* InformacaoProvider */]])
     ], InformacaoPage);
@@ -833,7 +888,7 @@ var TabsPage = /** @class */ (function () {
         this.tab5Root = __WEBPACK_IMPORTED_MODULE_5__grafico_grafico__["a" /* GraficoPage */];
     }
     TabsPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/marcelobittencourt/Documents/app-siv/src/pages/tabs/tabs.html"*/'<ion-tabs>\n  <ion-tab [root]="tab1Root" tabTitle="Sobre" tabIcon="ios-information-circle"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="Cadastro" tabIcon="md-add-circle"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="Bomba" tabIcon="water"></ion-tab>\n  <ion-tab [root]="tab4Root" tabTitle="Informacao" tabIcon="ios-leaf"></ion-tab>\n  <ion-tab [root]="tab5Root" tabTitle="Gráficos" tabIcon="md-analytics"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/Users/marcelobittencourt/Documents/app-siv/src/pages/tabs/tabs.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/marcelobittencourt/git/Aplicativo-SIV/app-siv/src/pages/tabs/tabs.html"*/'<ion-tabs>\n  <ion-tab [root]="tab1Root" tabTitle="Sobre" tabIcon="ios-information-circle"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="Cadastro" tabIcon="md-add-circle"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="Bomba" tabIcon="water"></ion-tab>\n  <ion-tab [root]="tab4Root" tabTitle="Informacao" tabIcon="ios-leaf"></ion-tab>\n  <ion-tab [root]="tab5Root" tabTitle="Gráficos" tabIcon="md-analytics"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/Users/marcelobittencourt/git/Aplicativo-SIV/app-siv/src/pages/tabs/tabs.html"*/
         }),
         __metadata("design:paramtypes", [])
     ], TabsPage);
@@ -867,29 +922,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var AboutPage = /** @class */ (function () {
-    function AboutPage(navCtrl, toastCtrl, informacaoProvider) {
+    function AboutPage(navCtrl, toastCtrl, informacaoProvider, loadingCtrl) {
         this.navCtrl = navCtrl;
         this.toastCtrl = toastCtrl;
         this.informacaoProvider = informacaoProvider;
+        this.loadingCtrl = loadingCtrl;
     }
     AboutPage.prototype.ionViewWillEnter = function () {
         var _this = this;
         this.informacaoProvider.getStart().subscribe(function (info) {
             _this.info = info;
-            //this.info = this.info.lista_info
-            console.log(_this.info);
         });
     };
     // Redireciona para a página de enviar email
     AboutPage.prototype.enviarEmailPagina = function () { this.navCtrl.push(__WEBPACK_IMPORTED_MODULE_2__email_email__["a" /* EmailPage */]); };
     AboutPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-about',template:/*ion-inline-start:"/Users/marcelobittencourt/Documents/app-siv/src/pages/about/about.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title style="text-align: center;">\n      Sobre\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <div style="text-align: center;">\n    <h2>Sistema de Irrigação Vertical</h2>\n    <h5>\n      Trabalho desenvolvido para a disciplina de Projeto Integrador III\n      do curso de Engenharia de Telecomunicações IFSC-SJ. Integrantes:\n    </h5>\n    <ion-list>\n      <ion-item>\n        Jeneffer Farias \n      </ion-item>\n      <ion-item>\n        Marcelo Bittencourt\n      </ion-item>\n      <ion-item>\n        Osvaldo Neto\n      </ion-item>\n    </ion-list>\n    \n    <button style="background-color: rgb(125, 197, 103)" id="buttonEmail" \n    ion-button (click)="enviarEmailPagina()">CONTATO</button>\n  </div>\n  <footer style="position: absolute; bottom: 5px;">\n    Versão 1.0 - janeiro de 2021\n  </footer>\n</ion-content>\n'/*ion-inline-end:"/Users/marcelobittencourt/Documents/app-siv/src/pages/about/about.html"*/
+            selector: 'page-about',template:/*ion-inline-start:"/Users/marcelobittencourt/git/Aplicativo-SIV/app-siv/src/pages/about/about.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title style="text-align: center;">\n      Sobre\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <div style="text-align: center;">\n    <h2>Sistema de Irrigação Vertical</h2>\n    <h5>\n      Trabalho desenvolvido para a disciplina de Projeto Integrador III\n      do curso de Engenharia de Telecomunicações IFSC-SJ. Integrantes:\n    </h5>\n    <ion-list>\n      <ion-item>\n        Jeneffer Farias \n      </ion-item>\n      <ion-item>\n        Marcelo Bittencourt\n      </ion-item>\n      <ion-item>\n        Osvaldo Neto\n      </ion-item>\n    </ion-list>\n    \n    <button style="background-color: rgb(125, 197, 103)" id="buttonEmail" \n    ion-button (click)="enviarEmailPagina()">CONTATO</button>\n  </div>\n  <footer style="position: absolute; bottom: 5px;">\n    Versão 1.0 - janeiro de 2021\n  </footer>\n</ion-content>\n'/*ion-inline-end:"/Users/marcelobittencourt/git/Aplicativo-SIV/app-siv/src/pages/about/about.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */],
-            __WEBPACK_IMPORTED_MODULE_3__providers_informacao_informacao__["a" /* InformacaoProvider */]])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_informacao_informacao__["a" /* InformacaoProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_informacao_informacao__["a" /* InformacaoProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]) === "function" && _d || Object])
     ], AboutPage);
     return AboutPage;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=about.js.map
@@ -1047,12 +1101,12 @@ var CadastroPage = /** @class */ (function () {
     };
     CadastroPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-cadastro',template:/*ion-inline-start:"/Users/marcelobittencourt/Documents/app-siv/src/pages/cadastro/cadastro.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title style="text-align: center;">\n      Cadastrar\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <br>\n    <div style="text-align: center;" *ngIf="vegetais">\n      <button id="buttonBomba" ion-button (click)="criarVegetalPagina(vegetais)">NOVO VEGETAL</button>\n    </div>\n  <br>\n  \n  <ion-row>\n    <ion-col id="colSpec">\n      <h4>Vegetais</h4>\n      <ion-card>\n       <ion-item *ngFor="let item of vegetais">\n        <ion-label>{{item.nome}}</ion-label>\n        <button ion-button outline item-end (click)="alterarVegetalPagina(item)">\n          <ion-icon name="create"></ion-icon>\n        </button>\n        <button ion-button outline item-end (click)="limpaVegetal(item.nome)">\n          <ion-icon id="butDelete" name="md-trash" color="danger"></ion-icon>\n        </button>\n       </ion-item>\n      </ion-card>\n    </ion-col>\n\n    <ion-col id="colSpec">\n      <h4>Vasos</h4>\n      <ion-card>\n       <ion-item *ngFor="let item of vasos">\n        <ion-label>Vaso {{item.id}}: {{item.vegetal}}</ion-label>\n        <button ion-button outline item-end (click)="alterarVasoPagina(item)">\n          <ion-icon name="create"></ion-icon>\n        </button>\n        <button ion-button outline item-end (click)="limpaVaso(item)">\n          <ion-icon id="butDelete" name="md-trash" color="danger"></ion-icon>\n        </button>\n       </ion-item>\n      </ion-card>\n    </ion-col>\n\n  </ion-row>\n  \n</ion-content>\n'/*ion-inline-end:"/Users/marcelobittencourt/Documents/app-siv/src/pages/cadastro/cadastro.html"*/,
+            selector: 'page-cadastro',template:/*ion-inline-start:"/Users/marcelobittencourt/git/Aplicativo-SIV/app-siv/src/pages/cadastro/cadastro.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title style="text-align: center;">\n      Cadastrar\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <br>\n    <div style="text-align: center;" *ngIf="vegetais">\n      <button id="buttonBomba" ion-button (click)="criarVegetalPagina(vegetais)">NOVO VEGETAL</button>\n    </div>\n  <br>\n  \n  <ion-row>\n    <ion-col id="colSpec">\n      <h4>Vegetais</h4>\n      <ion-card>\n       <ion-item *ngFor="let item of vegetais">\n        <ion-label>{{item.nome}}</ion-label>\n        <button ion-button outline item-end (click)="alterarVegetalPagina(item)">\n          <ion-icon name="create"></ion-icon>\n        </button>\n        <button ion-button outline item-end (click)="limpaVegetal(item.nome)">\n          <ion-icon id="butDelete" name="md-trash" color="danger"></ion-icon>\n        </button>\n       </ion-item>\n      </ion-card>\n    </ion-col>\n\n    <ion-col id="colSpec">\n      <h4>Vasos</h4>\n      <ion-card>\n       <ion-item *ngFor="let item of vasos">\n        <ion-label>Vaso {{item.id}}: {{item.vegetal}}</ion-label>\n        <button ion-button outline item-end (click)="alterarVasoPagina(item)">\n          <ion-icon name="create"></ion-icon>\n        </button>\n        <button ion-button outline item-end (click)="limpaVaso(item)">\n          <ion-icon id="butDelete" name="md-trash" color="danger"></ion-icon>\n        </button>\n       </ion-item>\n      </ion-card>\n    </ion-col>\n\n  </ion-row>\n  \n</ion-content>\n'/*ion-inline-end:"/Users/marcelobittencourt/git/Aplicativo-SIV/app-siv/src/pages/cadastro/cadastro.html"*/,
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_2__providers_vegetal_vegetal__["a" /* VegetalProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_vegetal_vegetal__["a" /* VegetalProvider */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_3__providers_vaso_vaso__["a" /* VasoProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_vaso_vaso__["a" /* VasoProvider */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* ToastController */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]) === "function" && _e || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__providers_vegetal_vegetal__["a" /* VegetalProvider */], __WEBPACK_IMPORTED_MODULE_3__providers_vaso_vaso__["a" /* VasoProvider */],
+            __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* ToastController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
     ], CadastroPage);
     return CadastroPage;
-    var _a, _b, _c, _d, _e;
 }());
 
 //# sourceMappingURL=cadastro.js.map
@@ -1240,7 +1294,7 @@ var MyApp = /** @class */ (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/marcelobittencourt/Documents/app-siv/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/marcelobittencourt/Documents/app-siv/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/marcelobittencourt/git/Aplicativo-SIV/app-siv/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/marcelobittencourt/git/Aplicativo-SIV/app-siv/src/app/app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["i" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
@@ -1652,7 +1706,7 @@ var ContactPage = /** @class */ (function () {
     }
     ContactPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-contact',template:/*ion-inline-start:"/Users/marcelobittencourt/Documents/app-siv/src/pages/contact/contact.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Contact\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-list-header>Follow us on Twitter</ion-list-header>\n    <ion-item>\n      <ion-icon name="ionic" item-start></ion-icon>\n      @ionicframework\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/marcelobittencourt/Documents/app-siv/src/pages/contact/contact.html"*/
+            selector: 'page-contact',template:/*ion-inline-start:"/Users/marcelobittencourt/git/Aplicativo-SIV/app-siv/src/pages/contact/contact.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Contact\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-list-header>Follow us on Twitter</ion-list-header>\n    <ion-item>\n      <ion-icon name="ionic" item-start></ion-icon>\n      @ionicframework\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/marcelobittencourt/git/Aplicativo-SIV/app-siv/src/pages/contact/contact.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]])
     ], ContactPage);
@@ -1687,7 +1741,7 @@ var HomePage = /** @class */ (function () {
     }
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/marcelobittencourt/Documents/app-siv/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Home</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h2>Welcome to Ionic!</h2>\n  <p>\n    This starter project comes with simple tabs-based layout for apps\n    that are going to primarily use a Tabbed UI.\n  </p>\n  <p>\n    Take a look at the <code>src/pages/</code> directory to add or change tabs,\n    update any existing page or create new pages.\n  </p>\n</ion-content>\n'/*ion-inline-end:"/Users/marcelobittencourt/Documents/app-siv/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/Users/marcelobittencourt/git/Aplicativo-SIV/app-siv/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Home</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <h2>Welcome to Ionic!</h2>\n  <p>\n    This starter project comes with simple tabs-based layout for apps\n    that are going to primarily use a Tabbed UI.\n  </p>\n  <p>\n    Take a look at the <code>src/pages/</code> directory to add or change tabs,\n    update any existing page or create new pages.\n  </p>\n</ion-content>\n'/*ion-inline-end:"/Users/marcelobittencourt/git/Aplicativo-SIV/app-siv/src/pages/home/home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]])
     ], HomePage);
