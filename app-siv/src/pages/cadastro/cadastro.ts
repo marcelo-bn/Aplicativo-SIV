@@ -128,7 +128,6 @@ export class CadastroPage {
     this.vasoProvider.getVaso().subscribe(info => {
       this.vasos = info
       this.vasos = this.vasos.lista_vasos
-      console.log(this.vasos)
     });
     
   }

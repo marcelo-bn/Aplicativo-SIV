@@ -7,8 +7,8 @@ webpackJsonp([7],{
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AlterarVasoPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_vaso_vaso__ = __webpack_require__(83);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_vegetal_vegetal__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_vaso_vaso__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_vegetal_vegetal__ = __webpack_require__(35);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -113,7 +113,7 @@ var AlterarVasoPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AlterarVegetalPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_vegetal_vegetal__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_vegetal_vegetal__ = __webpack_require__(35);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -313,7 +313,7 @@ var BombaPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CriarVegetalPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_vegetal_vegetal__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_vegetal_vegetal__ = __webpack_require__(35);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -488,7 +488,9 @@ var EmailPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GraficoPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_informacao_informacao__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_informacao_informacao__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_vaso_vaso__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_vegetal_vegetal__ = __webpack_require__(35);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -501,12 +503,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var GraficoPage = /** @class */ (function () {
-    function GraficoPage(navCtrl, navParams, informacaoProvider, loadingCtrl) {
+    // Construtor
+    function GraficoPage(navCtrl, navParams, informacaoProvider, vasoProvider, vegetalProvider, loadingCtrl) {
         this.navCtrl = navCtrl;
         this.navParams = navParams;
         this.informacaoProvider = informacaoProvider;
+        this.vasoProvider = vasoProvider;
+        this.vegetalProvider = vegetalProvider;
         this.loadingCtrl = loadingCtrl;
+        this.vegetaisVasos = ["", ""];
+        this.tempIdealVasos = ["", ""];
+        this.umidIdealVasos = ["", ""];
         this.chartOption = { scales: { xAxes: [{ display: false }] } };
         this.vaso1TempData = [{ data: [], label: 'temperatura (C)' }, { data: [], label: 'ideal' }];
         this.vaso1TempType = 'line';
@@ -537,17 +547,31 @@ var GraficoPage = /** @class */ (function () {
     GraficoPage.prototype.slideChanged = function () {
         this.slides.getActiveIndex();
     };
+    // Carrega ao entrar na página
     GraficoPage.prototype.ionViewWillEnter = function () {
+        //this.tempIdealVaso1 = ""
         var _this = this;
         this.informacaoProvider.getInfo().subscribe(function (info) {
             _this.info = info;
             _this.info = _this.info.lista_info;
         });
+        this.vegetalProvider.getVegetal().subscribe(function (info) {
+            _this.vegetais = info;
+            _this.vegetais = _this.vegetais.lista_vegetais;
+            console.log(_this.vegetais);
+        });
+        this.vasoProvider.getVaso().subscribe(function (info) {
+            _this.vasos = info;
+            _this.vasos = _this.vasos.lista_vasos;
+            console.log(_this.vasos);
+        });
         this.presentLoadingDefault(); // Mensagem de carregamento
         setTimeout(function () {
+            _this.verificaTempUmiAtual(); // Verifica a temperatura e umidade atual do vaso
             _this.carregaDados();
-        }, 3000);
+        }, 5000);
     };
+    // Mensagem de carregamento
     GraficoPage.prototype.presentLoadingDefault = function () {
         var loading = this.loadingCtrl.create({
             spinner: 'bubbles',
@@ -558,6 +582,22 @@ var GraficoPage = /** @class */ (function () {
             loading.dismiss();
         }, 2000);
     };
+    // Verifica temperatura e umidade ideal de cada vaso
+    GraficoPage.prototype.verificaTempUmiAtual = function () {
+        this.vegetaisVasos[0] = this.vasos[1].vegetal; // Vegetal no vaso 1
+        this.vegetaisVasos[1] = this.vasos[0].vegetal; // Vegetal no vaso 0
+        for (var _i = 0, _a = this.vegetaisVasos; _i < _a.length; _i++) {
+            var vegetaisVasos = _a[_i];
+            for (var _b = 0, _c = this.vegetais; _b < _c.length; _b++) {
+                var vegetal = _c[_b];
+                if (vegetal.nome == vegetaisVasos) {
+                    this.tempIdealVasos[0] = vegetal.tempIdeal;
+                }
+            }
+        }
+        console.log(this.tempIdealVasos);
+    };
+    // Inseri dados nos datasets
     GraficoPage.prototype.carregaDados = function () {
         this.vaso1TempLabels = [];
         this.vaso1TempData[0].data = [];
@@ -599,7 +639,7 @@ var GraficoPage = /** @class */ (function () {
                 var item = _c[_b];
                 if (item.idVaso == 1) {
                     if (item.temperatura != "") {
-                        this.vaso1TempData[1].data.push(25);
+                        this.vaso1TempData[1].data.push(22);
                         if (item.umidade != "") {
                             this.vaso1UmiData[1].data.push(55);
                         }
@@ -607,9 +647,9 @@ var GraficoPage = /** @class */ (function () {
                 }
                 else {
                     if (item.temperatura != "") {
-                        this.vaso2TempData[1].data.push(25);
+                        this.vaso2TempData[1].data.push(32);
                         if (item.umidade != "") {
-                            this.vaso2UmiData[1].data.push(55);
+                            this.vaso2UmiData[1].data.push(73);
                         }
                     }
                 }
@@ -625,16 +665,16 @@ var GraficoPage = /** @class */ (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_8" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Slides */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Slides */])
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Slides */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["j" /* Slides */]) === "function" && _a || Object)
     ], GraficoPage.prototype, "slides", void 0);
     GraficoPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-grafico',template:/*ion-inline-start:"/Users/marcelobittencourt/git/Aplicativo-SIV/app-siv/src/pages/grafico/grafico.html"*/'<!--\n  Generated template for the GraficoPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n  <ion-navbar>\n    <ion-title style="text-align: center;">Gráficos</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n\n  <ion-slides (ionSlideDidChange)="slideChanged()">\n\n    <ion-slide>\n        <h4 style="text-align: center;"> Vaso 1</h4>\n        <canvas baseChart [datasets]="vaso1TempData" [chartType]="vaso1TempType" [labels]="vaso1TempLabels"\n        [options]="chartOption" [colors]="vaso1TempColors"></canvas>\n          \n        <ion-list>\n          <ion-item>\n            <ion-label>Tipo do gráfico</ion-label>\n            <ion-select [(ngModel)]="vaso1TempType">\n              <ion-option value="line">Linha</ion-option>\n              <ion-option value="bar">Barra</ion-option>\n            </ion-select>\n          </ion-item>\n        </ion-list> \n\n        <canvas baseChart [datasets]="vaso1UmiData" [chartType]="vaso1UmiType" [labels]="vaso1UmiLabels"\n        [options]="chartOption"  [colors]="vaso1UmiColors"></canvas>\n          \n        <ion-list>\n          <ion-item>\n            <ion-label>Tipo do gráfico</ion-label>\n            <ion-select [(ngModel)]="vaso1UmiType">\n              <ion-option value="line">Linha</ion-option>\n              <ion-option value="bar">Barra</ion-option>\n            </ion-select>\n          </ion-item>\n        </ion-list> \n    </ion-slide>\n    \n    <ion-slide>\n      <h4 style="text-align: center;"> Vaso 2</h4>\n        <canvas baseChart [datasets]="vaso2TempData" [chartType]="vaso2TempType" [labels]="vaso2TempLabels"\n        [options]="chartOption" [colors]="vaso2TempColors"></canvas>\n          \n        <ion-list>\n          <ion-item>\n            <ion-label>Tipo do gráfico</ion-label>\n            <ion-select [(ngModel)]="vaso2TempType">\n              <ion-option value="line">Linha</ion-option>\n              <ion-option value="bar">Barra</ion-option>\n            </ion-select>\n          </ion-item>\n        </ion-list> \n\n        <canvas baseChart [datasets]="vaso2UmiData" [chartType]="vaso2UmiType" [labels]="vaso2UmiLabels"\n        [options]="chartOption" [colors]="vaso2UmiColors"></canvas>\n          \n        <ion-list>\n          <ion-item>\n            <ion-label>Tipo do gráfico</ion-label>\n            <ion-select [(ngModel)]="vaso2UmiType">\n              <ion-option value="line">Linha</ion-option>\n              <ion-option value="bar">Barra</ion-option>\n            </ion-select>\n          </ion-item>\n        </ion-list> \n    </ion-slide>\n\n  </ion-slides>\n\n\n</ion-content>\n\n'/*ion-inline-end:"/Users/marcelobittencourt/git/Aplicativo-SIV/app-siv/src/pages/grafico/grafico.html"*/,
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */],
-            __WEBPACK_IMPORTED_MODULE_2__providers_informacao_informacao__["a" /* InformacaoProvider */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]])
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* NavParams */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_2__providers_informacao_informacao__["a" /* InformacaoProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__providers_informacao_informacao__["a" /* InformacaoProvider */]) === "function" && _d || Object, typeof (_e = typeof __WEBPACK_IMPORTED_MODULE_3__providers_vaso_vaso__["a" /* VasoProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__providers_vaso_vaso__["a" /* VasoProvider */]) === "function" && _e || Object, typeof (_f = typeof __WEBPACK_IMPORTED_MODULE_4__providers_vegetal_vegetal__["a" /* VegetalProvider */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4__providers_vegetal_vegetal__["a" /* VegetalProvider */]) === "function" && _f || Object, typeof (_g = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* LoadingController */]) === "function" && _g || Object])
     ], GraficoPage);
     return GraficoPage;
+    var _a, _b, _c, _d, _e, _f, _g;
 }());
 
 //# sourceMappingURL=grafico.js.map
@@ -648,7 +688,7 @@ var GraficoPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InformacaoPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_informacao_informacao__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_informacao_informacao__ = __webpack_require__(51);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -760,7 +800,7 @@ module.exports = webpackAsyncContext;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BombaProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -907,7 +947,7 @@ var TabsPage = /** @class */ (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__email_email__ = __webpack_require__(110);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_informacao_informacao__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_informacao_informacao__ = __webpack_require__(51);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -957,8 +997,8 @@ var AboutPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CadastroPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(13);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_vegetal_vegetal__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_vaso_vaso__ = __webpack_require__(83);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__providers_vegetal_vegetal__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__providers_vaso_vaso__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__alterar_vegetal_alterar_vegetal__ = __webpack_require__(107);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__criar_vegetal_criar_vegetal__ = __webpack_require__(109);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__alterar_vaso_alterar_vaso__ = __webpack_require__(106);
@@ -1085,7 +1125,6 @@ var CadastroPage = /** @class */ (function () {
         this.vasoProvider.getVaso().subscribe(function (info) {
             _this.vasos = info;
             _this.vasos = _this.vasos.lista_vasos;
-            console.log(_this.vasos);
         });
     };
     // Verifica se é possível deletar o vegetal
@@ -1127,6 +1166,90 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
+/***/ 35:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VegetalProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var VegetalProvider = /** @class */ (function () {
+    function VegetalProvider(http) {
+        this.http = http;
+    }
+    VegetalProvider.prototype.getVegetal = function () {
+        return this.http.get('https://projeto-siv.herokuapp.com/vegetal');
+    };
+    VegetalProvider.prototype.putVegetal = function (nome, tempIdeal, umiIdeal) {
+        var body = {
+            nome: nome,
+            tempIdeal: String(tempIdeal),
+            umidadeIdeal: String(umiIdeal)
+        };
+        var headers = new __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["c" /* HttpHeaders */]()
+            .set("Content-Type", "application/json");
+        return this.http.put('https://projeto-siv.herokuapp.com/vegetal', JSON.stringify(body), { headers: headers }).subscribe(function (val) {
+            console.log("PUT realizado", val);
+        }, function (response) {
+            console.log("PUT não realizado", response);
+        });
+    };
+    VegetalProvider.prototype.postVegetal = function (nome, tempIdeal, umiIdeal) {
+        var body = {
+            nome: nome,
+            tempIdeal: String(tempIdeal),
+            umidadeIdeal: String(umiIdeal)
+        };
+        var headers = new __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["c" /* HttpHeaders */]()
+            .set("Content-Type", "application/json");
+        return this.http.post('https://projeto-siv.herokuapp.com/vegetal', JSON.stringify(body), { headers: headers }).subscribe(function (val) {
+            console.log("POST realizado", val);
+        }, function (response) {
+            console.log("POST não realizado", response);
+        });
+    };
+    VegetalProvider.prototype.deleteVegetal = function (vegetal) {
+        var data = {
+            nome: vegetal
+        };
+        var data_JSON = JSON.stringify(data);
+        //const headers = new HttpHeaders()
+        //.set("Content-Type", "application/json");
+        var httpOptions = {
+            headers: new __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["c" /* HttpHeaders */]({ 'Content-Type': 'application/json' }), body: data_JSON
+        };
+        return this.http.delete("https://projeto-siv.herokuapp.com/vegetal", httpOptions)
+            .subscribe(function (val) {
+            console.log("DELETE realizado!", val);
+        }, function (response) {
+            console.log("DELETE não realizado!", response);
+        });
+    };
+    VegetalProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
+    ], VegetalProvider);
+    return VegetalProvider;
+}());
+
+//# sourceMappingURL=vegetal.js.map
+
+/***/ }),
+
 /***/ 370:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1153,9 +1276,9 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__ionic_native_status_bar__ = __webpack_require__(207);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__ionic_native_splash_screen__ = __webpack_require__(210);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__providers_bomba_bomba__ = __webpack_require__(166);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__providers_vaso_vaso__ = __webpack_require__(83);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__providers_vegetal_vegetal__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__providers_informacao_informacao__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__providers_vaso_vaso__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__providers_vegetal_vegetal__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__providers_informacao_informacao__ = __webpack_require__(51);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__providers_email_email__ = __webpack_require__(167);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1598,90 +1721,6 @@ webpackContext.id = 429;
 
 /***/ }),
 
-/***/ 43:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VegetalProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var VegetalProvider = /** @class */ (function () {
-    function VegetalProvider(http) {
-        this.http = http;
-    }
-    VegetalProvider.prototype.getVegetal = function () {
-        return this.http.get('https://projeto-siv.herokuapp.com/vegetal');
-    };
-    VegetalProvider.prototype.putVegetal = function (nome, tempIdeal, umiIdeal) {
-        var body = {
-            nome: nome,
-            tempIdeal: String(tempIdeal),
-            umidadeIdeal: String(umiIdeal)
-        };
-        var headers = new __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["c" /* HttpHeaders */]()
-            .set("Content-Type", "application/json");
-        return this.http.put('https://projeto-siv.herokuapp.com/vegetal', JSON.stringify(body), { headers: headers }).subscribe(function (val) {
-            console.log("PUT realizado", val);
-        }, function (response) {
-            console.log("PUT não realizado", response);
-        });
-    };
-    VegetalProvider.prototype.postVegetal = function (nome, tempIdeal, umiIdeal) {
-        var body = {
-            nome: nome,
-            tempIdeal: String(tempIdeal),
-            umidadeIdeal: String(umiIdeal)
-        };
-        var headers = new __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["c" /* HttpHeaders */]()
-            .set("Content-Type", "application/json");
-        return this.http.post('https://projeto-siv.herokuapp.com/vegetal', JSON.stringify(body), { headers: headers }).subscribe(function (val) {
-            console.log("POST realizado", val);
-        }, function (response) {
-            console.log("POST não realizado", response);
-        });
-    };
-    VegetalProvider.prototype.deleteVegetal = function (vegetal) {
-        var data = {
-            nome: vegetal
-        };
-        var data_JSON = JSON.stringify(data);
-        //const headers = new HttpHeaders()
-        //.set("Content-Type", "application/json");
-        var httpOptions = {
-            headers: new __WEBPACK_IMPORTED_MODULE_0__angular_common_http__["c" /* HttpHeaders */]({ 'Content-Type': 'application/json' }), body: data_JSON
-        };
-        return this.http.delete("https://projeto-siv.herokuapp.com/vegetal", httpOptions)
-            .subscribe(function (val) {
-            console.log("DELETE realizado!", val);
-        }, function (response) {
-            console.log("DELETE não realizado!", response);
-        });
-    };
-    VegetalProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
-    ], VegetalProvider);
-    return VegetalProvider;
-}());
-
-//# sourceMappingURL=vegetal.js.map
-
-/***/ }),
-
 /***/ 430:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1752,57 +1791,14 @@ var HomePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 50:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InformacaoProvider; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(49);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-var InformacaoProvider = /** @class */ (function () {
-    function InformacaoProvider(http) {
-        this.http = http;
-        this.URI = 'https://projeto-siv.herokuapp.com/';
-    }
-    InformacaoProvider.prototype.getStart = function () {
-        return this.http.get('https://projeto-siv.herokuapp.com/ativo');
-    };
-    InformacaoProvider.prototype.getInfo = function () {
-        return this.http.get('https://projeto-siv.herokuapp.com/informacao');
-    };
-    InformacaoProvider = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
-    ], InformacaoProvider);
-    return InformacaoProvider;
-}());
-
-//# sourceMappingURL=informacao.js.map
-
-/***/ }),
-
-/***/ 83:
+/***/ 49:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return VasoProvider; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(34);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1861,6 +1857,49 @@ var VasoProvider = /** @class */ (function () {
 }());
 
 //# sourceMappingURL=vaso.js.map
+
+/***/ }),
+
+/***/ 51:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return InformacaoProvider; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common_http__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+var InformacaoProvider = /** @class */ (function () {
+    function InformacaoProvider(http) {
+        this.http = http;
+        this.URI = 'https://projeto-siv.herokuapp.com/';
+    }
+    InformacaoProvider.prototype.getStart = function () {
+        return this.http.get('https://projeto-siv.herokuapp.com/ativo');
+    };
+    InformacaoProvider.prototype.getInfo = function () {
+        return this.http.get('https://projeto-siv.herokuapp.com/informacao');
+    };
+    InformacaoProvider = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_common_http__["a" /* HttpClient */]])
+    ], InformacaoProvider);
+    return InformacaoProvider;
+}());
+
+//# sourceMappingURL=informacao.js.map
 
 /***/ })
 
