@@ -16,11 +16,12 @@ export class GraficoPage {
   @ViewChild(Slides) slides: Slides;
 
   info: any;
+  loading: any;
   vasos: any;
   vegetais: any;
   public vegetaisVasos = ["",""];
   public tempIdealVasos = ["",""];
-  public umidIdealVasos = ["",""];
+  public umiIdealVasos = ["",""];
   
   public chartOption: ChartOptions = { scales: { xAxes: [{ display: false }] } }
 
@@ -74,10 +75,9 @@ export class GraficoPage {
   }
 
   // Carrega ao entrar na página
-  ionViewWillEnter() {
-    //this.tempIdealVaso1 = ""
+  async ionViewWillEnter() {
 
-    this.informacaoProvider.getInfo().subscribe(info => {
+    /*this.informacaoProvider.getInfo().subscribe(info => {
       this.info = info
       this.info = this.info.lista_info
     });
@@ -90,7 +90,19 @@ export class GraficoPage {
       this.vasos = info
       this.vasos = this.vasos.lista_vasos
       console.log(this.vasos)
-    });
+    });*/
+
+    let info = await this.informacaoProvider.getInfoTeste()
+    this.info = JSON.parse(JSON.stringify(info)).lista_info
+    console.log(this.info)
+    
+    let vegetal = await this.vegetalProvider.getVegetalTeste()
+    this.vegetais = JSON.parse(JSON.stringify(vegetal)).lista_vegetais
+    console.log(this.vegetais)
+
+    let vaso = await this.vasoProvider.getVasoTeste()
+    this.vasos = JSON.parse(JSON.stringify(vaso)).lista_vasos
+    console.log(this.vasos)
 
     this.presentLoadingDefault() // Mensagem de carregamento
 
@@ -98,22 +110,24 @@ export class GraficoPage {
       this.verificaTempUmiAtual() // Verifica a temperatura e umidade atual do vaso
       this.carregaDados()
     }, 5000);
+
    
   }
   
   // Mensagem de carregamento
   presentLoadingDefault() {
-    let loading = this.loadingCtrl.create({
+    this.loading = this.loadingCtrl.create({
       spinner: 'bubbles',
       content: 'Carregando dados'
     });
   
-    loading.present();
+    this.loading.present();
   
     setTimeout(() => {
-      loading.dismiss();
+      this.loading.dismiss();
     }, 2000);
   }
+
 
   // Verifica temperatura e umidade ideal de cada vaso
   verificaTempUmiAtual() {
@@ -121,19 +135,17 @@ export class GraficoPage {
     this.vegetaisVasos[0] = this.vasos[1].vegetal // Vegetal no vaso 1
     this.vegetaisVasos[1] = this.vasos[0].vegetal // Vegetal no vaso 0
     
+    let i = 0
     for (let vegetaisVasos of this.vegetaisVasos) {
       for (let vegetal of this.vegetais) {
         if (vegetal.nome == vegetaisVasos) {
-          this.tempIdealVasos[0] = vegetal.tempIdeal
+          this.tempIdealVasos[i] = vegetal.tempIdeal // Add no vetor de temperatura Ideal 0 - vaso1, 1 - vaso2
+          this.umiIdealVasos[i] = vegetal.umidadeIdeal // Add no vetor de umidade Ideal
+          i++
         }
       }
     }
-    console.log(this.tempIdealVasos)
-
   }
-
-
-
 
 
   // Inseri dados nos datasets
@@ -186,17 +198,17 @@ export class GraficoPage {
         for (let item of this.info) {
           if (item.idVaso == 1) {
             if (item.temperatura != "") {
-              (this.vaso1TempData[1].data as number []).push(22)
+              (this.vaso1TempData[1].data as number []).push(Number(this.tempIdealVasos[0]))
               if (item.umidade != "") {
-                (this.vaso1UmiData[1].data as number []).push(55)
+                (this.vaso1UmiData[1].data as number []).push(Number(this.umiIdealVasos[0]))
               }
             }
           }
           else {
             if (item.temperatura != "") {
-              (this.vaso2TempData[1].data as number []).push(32)
+              (this.vaso2TempData[1].data as number []).push(Number(this.tempIdealVasos[1]))
               if (item.umidade != "") {
-              (this.vaso2UmiData[1].data as number []).push(73)
+              (this.vaso2UmiData[1].data as number []).push(Number(this.umiIdealVasos[1]))
               }
           }
           }

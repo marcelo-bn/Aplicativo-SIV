@@ -14,13 +14,16 @@ export class InformacaoPage {
 
   }
 
-  ionViewWillEnter(){
-    this.informacaoProvider.getInfo().subscribe(info => {
+  async ionViewWillEnter(){
+    /*this.informacaoProvider.getInfo().subscribe(info => {
       this.info = info
       this.info = this.info.lista_info
       console.log(this.info)
-    });
-    
+    });*/
+    let res = await this.informacaoProvider.getInfoTeste()
+    this.info = JSON.parse(JSON.stringify(res)).lista_info
+    //console.log(JSON.parse(JSON.stringify(res)).lista_info)
+ 
   }
 
 }

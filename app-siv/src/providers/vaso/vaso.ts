@@ -11,6 +11,11 @@ export class VasoProvider {
     return this.http.get('https://projeto-siv.herokuapp.com/vaso');    
   }
 
+  async getVasoTeste() {
+    return await this.http.get('https://projeto-siv.herokuapp.com/vaso').toPromise()
+                      .then( info => info); 
+  }
+
   putVaso(idVaso,nomeVegetal) {
 
     let body = {

@@ -119,8 +119,8 @@ export class CadastroPage {
 
 
   // Métodos GET Vegetal e Vaso
-  ionViewWillEnter(){
-    this.vegetalProvider.getVegetal().subscribe(info => {
+  async ionViewWillEnter(){
+    /*this.vegetalProvider.getVegetal().subscribe(info => {
       this.vegetais = info
       this.vegetais = this.vegetais.lista_vegetais
     });
@@ -128,8 +128,15 @@ export class CadastroPage {
     this.vasoProvider.getVaso().subscribe(info => {
       this.vasos = info
       this.vasos = this.vasos.lista_vasos
-    });
-    
+    });*/
+
+    let vegetal = await this.vegetalProvider.getVegetalTeste()
+    this.vegetais = JSON.parse(JSON.stringify(vegetal)).lista_vegetais
+
+    let vaso = await this.vasoProvider.getVasoTeste()
+    this.vasos = JSON.parse(JSON.stringify(vaso)).lista_vasos
+    console.log(this.vegetais)
+    console.log(this.vasos)
   }
 
 

@@ -11,6 +11,11 @@ export class VegetalProvider {
     return this.http.get('https://projeto-siv.herokuapp.com/vegetal');    
   }
 
+  async getVegetalTeste() {
+    return await this.http.get('https://projeto-siv.herokuapp.com/vegetal').toPromise()
+                      .then( info => info); 
+  }
+
   putVegetal(nome,tempIdeal,umiIdeal) {
 
     let body = {

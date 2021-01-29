@@ -10,12 +10,21 @@ export class InformacaoProvider {
   constructor(public http: HttpClient) {}
 
 
-  getStart(){
-    return this.http.get('https://projeto-siv.herokuapp.com/ativo');    
+  async getStart(){
+    //return this.http.get('https://projeto-siv.herokuapp.com/ativo');    
+    return await this.http.get('https://projeto-siv.herokuapp.com/ativo').toPromise()
+                      .then( info => info);    
   }
 
   getInfo(){
-    return this.http.get('https://projeto-siv.herokuapp.com/informacao');    
+    return this.http.get('https://projeto-siv.herokuapp.com/informacao');   
+  }
+
+  async getInfoTeste() {
+    return await this.http.get('https://projeto-siv.herokuapp.com/informacao').toPromise()
+                      .then( info => info);    
+    //console.log(x)
+    //return x
   }
 
 
